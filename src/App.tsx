@@ -11,6 +11,7 @@ import Schedule from './pages/Schedule';
 import Registration from './pages/Registration';
 import Footer from './components/Footer';
 import ScrollToTop from './utils/ScrollToTop';
+import ComingSoon from './pages/ComingSoon';
 
 function App() {
   return (
@@ -20,14 +21,14 @@ function App() {
         <Navbar />
         <AnimatePresence mode="wait">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/events/:id" element={<EventDetails />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/schedule" element={<Schedule />} />
-            <Route path="/register" element={<Registration />} />
+            <Route path="/" element={<ComingSoon />} />
+            <Route path="/events" element={<ComingSoon />} />
+            <Route path="/events/:id" element={<ComingSoon />} />
+            <Route path="/team" element={<ComingSoon />} />
+            <Route path="/gallery" element={<ComingSoon />} />
+            <Route path="/contact" element={<ComingSoon />} />
+            <Route path="/schedule" element={<ComingSoon />} />
+            <Route path="/register" element={<ComingSoon />} />
           </Routes>
         </AnimatePresence>
         <Footer />

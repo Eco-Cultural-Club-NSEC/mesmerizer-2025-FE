@@ -148,9 +148,6 @@ const EventDetails = () => {
               <h1 className="text-4xl font-black mb-4 gradient-text">
                 {event.title}
               </h1>
-              {/* <span className="inline-block bg-[rgb(var(--color-secondary))] text-black px-4 py-1 font-bold border-2 border-black">
-                {event.category}
-              </span> */}
             </div>
 
             <div className="neo-card bg-[rgb(var(--color-accent))]/5">
@@ -185,7 +182,6 @@ const EventDetails = () => {
                 {event.coordinators &&
                   event.coordinators.map((cr, index) => (
                     <li key={index} className="text-lg">
-                      {/* {`${cr.name}  ${cr.contact}`} */}
                       {cr.name} &ndash; {cr.contact}
                     </li>
                   ))}
