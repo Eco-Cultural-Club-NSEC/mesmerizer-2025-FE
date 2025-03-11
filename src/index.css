@@ -24,6 +24,18 @@
     font-family: 'morbithrone', sans-serif;
   }
 
+  .text-custom-white {
+    color: #dfdfdf;
+  }
+
+  .bg-custom-white{
+    background-color: #dfdfdf;
+  }
+
+.bg-custom-black{
+    background-color: #323232;
+  }
+
   .pattern-dots {
     background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
     background-size: 20px 20px;
@@ -129,7 +141,7 @@
   }
 
   .neo-card {
-    @apply bg-white dark:bg-zinc-800 border-4 border-black dark:border-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)];
+    @apply dark:bg-zinc-800 border-4 border-black dark:border-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)];
   }
 
   .neo-card-hover {

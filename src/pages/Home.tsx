@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { differenceInDays, differenceInHours, differenceInMinutes, differenceInSeconds } from 'date-fns';
 import { events, sponsors } from '../data';
 
-const eventDate = new Date('2024-04-15');
+const eventDate = new Date('2025-05-15');
 
 const featuredEvents = events.slice(0, 3); // Get first 3 events as featured
 const galleryImages = [
@@ -53,21 +53,26 @@ const Home = () => {
       className="pt-16"
     >
       {/* Hero Section with Comic Pattern */}
-      <section className="relative h-screen flex items-center justify-center hero-pattern">
+      <section className="relative h-screen flex items-center justify-center hero-pattern bg-fixed"
+        style={{
+          backgroundImage: "url('src/assets/pics/Copy of Mesmerizer 2024 SB Final_III.pdf (32).svg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-6xl md:text-8xl font-black mb-4 text-black dark:text-white mix-blend-difference"
+            className="text-6xl md:text-8xl font-black mb-4 text-custom-white dark:text-white "
           >
-            CULTFEST '24
+            Mesmerizer'25
           </motion.h1>
           <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="text-xl md:text-2xl mb-8 text-black dark:text-white mix-blend-difference"
+            className="text-xl md:text-2xl mb-8 text-custom-white dark:text-white"
           >
             Where Culture Meets Creativity
           </motion.p>
@@ -77,21 +82,21 @@ const Home = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-8"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-10xl mx-auto mb-8"
           >
-            <div className="neo-card bg-white/90">
-              <div className="text-4xl font-bold">{timeLeft.days}</div>
+            <div className="neo-card bg-custom-white">
+              <div className="text-4xl font-bold ">{timeLeft.days}</div>
               <div className="text-sm">Days</div>
             </div>
-            <div className="neo-card bg-white/90">
+            <div className="neo-card bg-custom-white">
               <div className="text-4xl font-bold">{timeLeft.hours}</div>
               <div className="text-sm">Hours</div>
             </div>
-            <div className="neo-card bg-white/90">
+            <div className="neo-card bg-custom-white">
               <div className="text-4xl font-bold">{timeLeft.minutes}</div>
               <div className="text-sm">Minutes</div>
             </div>
-            <div className="neo-card bg-white/90">
+            <div className="neo-card bg-custom-white">
               <div className="text-4xl font-bold">{timeLeft.seconds}</div>
               <div className="text-sm">Seconds</div>
             </div>
@@ -103,10 +108,10 @@ const Home = () => {
             transition={{ delay: 0.8 }}
             className="space-x-4"
           >
-            <Link to="/events" className="neo-button-primary inline-flex items-center">
+            <Link to="/events" className="neo-button-primary inline-flex items-center font-light text-black">
               Explore Events <ArrowRight className="ml-2" />
             </Link>
-            <Link to="/register" className="neo-button-secondary inline-flex items-center">
+            <Link to="/register" className="neo-button-secondary inline-flex items-center font-light">
               Register Now <Star className="ml-2" />
             </Link>
           </motion.div>
@@ -114,35 +119,40 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-20 pattern-zigzag">
+      <section className="py-20 pattern-zigzag"
+      style={{
+        backgroundColor: '#dfdfdf',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-black mb-6 gradient-text">About The Festival</h2>
-              <p className="text-lg mb-6">
+              <p className="text-lg mb-6 text-custom-white">
                 CultFest '24 is more than just a festival - it's a celebration of creativity,
                 culture, and community. Join us for three days of music, dance, art, and more
                 as we bring together talented individuals from across the country.
               </p>
-              <div className="space-y-4 mb-8">
+              <div className="space-y-4 mb-8 text-custom-white">
                 <div className="flex items-center">
                   <Calendar className="mr-4 text-[rgb(var(--color-primary))]" />
                   <div>
-                    <h3 className="font-bold">Date</h3>
+                    <h3 className="">Date</h3>
                     <p>April 15-17, 2024</p>
                   </div>
                 </div>
                 <div className="flex items-center">
                   <MapPin className="mr-4 text-[rgb(var(--color-secondary))]" />
                   <div>
-                    <h3 className="font-bold">Venue</h3>
+                    <h3 className="">Venue</h3>
                     <p>University Campus</p>
                   </div>
                 </div>
                 <div className="flex items-center">
                   <Users className="mr-4 text-[rgb(var(--color-accent))]" />
                   <div>
-                    <h3 className="font-bold">Participants</h3>
+                    <h3 className="">Participants</h3>
                     <p>1000+ Students</p>
                   </div>
                 </div>
@@ -163,7 +173,12 @@ const Home = () => {
       </section>
 
       {/* Featured Events */}
-      <section className="py-20 pattern-bubbles">
+      <section className="py-20 pattern-bubbles bg-fixed"
+      style={{
+        backgroundImage: "url('src/assets/pics/Copy of Mesmerizer 2024 SB Final_III.pdf (32).svg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-black mb-4 gradient-text">Featured Events</h2>
@@ -183,7 +198,7 @@ const Home = () => {
                     alt={event.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-2 right-2 bg-[rgb(var(--color-secondary))] px-3 py-1 text-black font-bold rounded-full">
+                  <div className="absolute top-2 right-2 bg-[rgb(var(--color-secondary))] px-3 py-1 text-custom-white font-bold rounded-full">
                     {event.category}
                   </div>
                 </div>
@@ -202,7 +217,13 @@ const Home = () => {
       </section>
 
       {/* Gallery Glimpse */}
-      <section className="py-20 pattern-circuit">
+      <section className="py-20 pattern-circuit bg-fixed"
+      style={{
+        backgroundColor: 'rgb(0, 0, 0, 1)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }
+      }>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-black mb-4 gradient-text">Gallery</h2>
@@ -245,7 +266,12 @@ const Home = () => {
       </section>
 
       {/* Sponsors */}
-      <section className="py-20 pattern-diagonal">
+      <section className="py-20 pattern-diagonal bg-fixed"
+      style={{
+        backgroundImage: "url('src/assets/pics/Copy of Mesmerizer 2024 SB Final_III.pdf (32).svg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-black mb-4 gradient-text">Our Sponsors</h2>

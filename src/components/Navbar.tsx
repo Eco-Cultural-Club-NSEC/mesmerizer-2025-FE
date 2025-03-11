@@ -13,7 +13,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed w-full z-50 bg-white dark:bg-zinc-900 border-b-4 border-black dark:border-white">
+    <nav className="fixed w-full z-50 bg-custom-white dark:bg-zinc-900 border-b-4 border-black dark:border-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
@@ -36,12 +36,6 @@ const Navbar = () => {
             <Link to="/contact" className="font-bold hover:text-rgb(var(--color-primary))">
               Contact
             </Link>
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800"
-            >
-              {isDark ? <Sun size={24} /> : <Moon size={24} />}
-            </button>
           </div>
 
           {/* Mobile Menu Button */}
