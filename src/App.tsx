@@ -18,20 +18,20 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className="min-h-screen flex flex-col">
-        {/* <Navbar /> */}
+        <Navbar />
         <AnimatePresence mode="wait">
           <Routes>
-            <Route path="/" element={<ComingSoon />} />
-            <Route path="/events" element={<ComingSoon />} />
-            <Route path="/events/:id" element={<ComingSoon />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/events/:id" element={<EventDetails />} />
             <Route path="/team" element={<ComingSoon />} />
-            <Route path="/gallery" element={<ComingSoon />} />
-            <Route path="/contact" element={<ComingSoon />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/schedule" element={<ComingSoon />} />
-            <Route path="/register" element={<ComingSoon />} />
+            <Route path="/register" element={<Registration />} />
           </Routes>
         </AnimatePresence>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </Router>
   );
