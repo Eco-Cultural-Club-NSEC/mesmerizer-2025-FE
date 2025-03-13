@@ -8,7 +8,7 @@ const Footer = () => {
       className="dark:bg-zinc-900 border-t-4 border-black dark:border-white mt-auto text-blue-900"
       style={{
         backgroundImage:
-          "url('src/assets/pics/forsaken_alleyway_in_a_ruined_city.jpg')",
+          "url('/pics/forsaken_alleyway_in_a_ruined_city.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

@@ -60,7 +60,7 @@ const Home = () => {
         className="relative h-screen flex items-center justify-center hero-pattern max-md:h-auto max-md:pb-20"
         style={{
           backgroundImage:
-            "url('src/assets/pics/Copy of Mesmerizer 2024 SB Final_III.pdf (32).svg')",
+            "url('/pics/Copy of Mesmerizer 2024 SB Final_III.pdf (32).svg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -140,7 +140,7 @@ const Home = () => {
       <section
         className="py-20 pattern-zigzag h-content md:h-screen flex items-center border-b-[20px] border-black"
         style={{
-          backgroundImage: "url('src/assets/pics/Firefly 20250208005858.svg')",
+          backgroundImage: "url('/pics/Firefly 20250208005858.svg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -203,7 +203,7 @@ const Home = () => {
       <section
         className="py-20 pattern-bubbles h-content flex items-center text-white"
         style={{
-          backgroundImage: "url('src/assets/pics/Firefly 20250210194301.svg')",
+          backgroundImage: "url('/pics/Firefly 20250210194301.svg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -230,7 +230,7 @@ const Home = () => {
         className="py-20 pattern-circuit text-white"
         style={{
           backgroundImage:
-            "url('src/assets/pics/Leonardo_Anime_XL_A_dark_apocalyptic_city_at_night_filled_with_1_enhanced.jpg')",
+            "url('/pics/Leonardo_Anime_XL_A_dark_apocalyptic_city_at_night_filled_with_1_enhanced.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -291,7 +291,7 @@ const Home = () => {
         className="py-20 pattern-comic text-white"
         style={{
           backgroundImage:
-            "url('src/assets/pics/A_desolate_fogcovered_forest_at_night.jpg')",
+            "url('/pics/A_desolate_fogcovered_forest_at_night.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
