@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'morbithrone';
-  src: url('./assets/fonts/MorbithronePersonalUse.woff') format('woff');
+  font-family: "morbithrone";
+  src: url("./assets/fonts/MorbithronePersonalUse.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -11,28 +11,45 @@
 
 @layer base {
   :root {
-    --color-primary: 255 64 129;    /* Hot Pink */
-    --color-secondary: 255 196 0;   /* Bright Yellow */
-    --color-accent: 0 230 118;      /* Vibrant Green */
-    --color-purple: 170 51 255;     /* Electric Purple */
-    --color-indigo: 61 90 254;      /* Bright Indigo */
-    --color-teal: 29 233 182;       /* Bright Teal */
-    --color-orange: 255 110 64;     /* Bright Orange */
+    --color-primary: 255 64 129; /* Hot Pink */
+    --color-secondary: 255 196 0; /* Bright Yellow */
+    --color-accent: 0 230 118; /* Vibrant Green */
+    --color-purple: 170 51 255; /* Electric Purple */
+    --color-indigo: 61 90 254; /* Bright Indigo */
+    --color-teal: 29 233 182; /* Bright Teal */
+    --color-orange: 255 110 64; /* Bright Orange */
+
+    --color-dark-green: 28 36 32;
+    --color-light-green: 52 58 43;
+    --color-dark-orange: 65 28 27;
+    --color-light-orange: 191 84 40;
+    --color-dark-blue: 22 41 52;
+    --color-light-blue: 65 135 166;
+    --color-dark-purple: 45 23 42;
+    --color-light-purple: 85 43 76;
+  }
+
+  .glass-box {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-lg transition-all duration-300;
+  }
+
+  .glass-box:hover {
+    @apply border-white/40 shadow-xl shadow-white/30 scale-105;
   }
 
   body {
-    font-family: 'morbithrone', sans-serif;
+    font-family: "morbithrone", sans-serif;
   }
 
   .text-custom-white {
     color: #dfdfdf;
   }
 
-  .bg-custom-white{
+  .bg-custom-white {
     background-color: #dfdfdf;
   }
 
-.bg-custom-black{
+  .bg-custom-black {
     background-color: #323232;
   }
 
@@ -43,7 +60,7 @@
 
   .pattern-grid {
     background-image: linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
     background-size: 20px 20px;
   }
 

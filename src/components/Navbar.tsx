@@ -1,49 +1,62 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X, Sun, Moon } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle('dark');
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <nav className="fixed w-full z-50 bg-custom-white dark:bg-zinc-900 border-b-4 border-black dark:border-white">
+    <nav
+      className={`fixed w-full z-50 text-white bg-transparent border-white/20 shadow-lg transition-all duration-300 ${
+        scrolled ? "border-b backdrop-blur-md" : ""
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between h-20">
           <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className="text-2xl font-black">
-              CULTFEST '24
+            <Link to="/" className="text-3xl">
+              MESMERIZER'25
             </Link>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link to="/events" className="font-bold hover:text-rgb(var(--color-primary))">
+          <div className="hidden md:flex items-center space-x-8 text-xl">
+            <Link to="/events" className="hover:text-rgb(var(--color-primary))">
               Events
             </Link>
-            <Link to="/team" className="font-bold hover:text-rgb(var(--color-primary))">
+            <Link to="/team" className="hover:text-rgb(var(--color-primary))">
               Team
             </Link>
-            <Link to="/gallery" className="font-bold hover:text-rgb(var(--color-primary))">
+            <Link
+              to="/gallery"
+              className="hover:text-rgb(var(--color-primary))"
+            >
               Gallery
             </Link>
-            <Link to="/contact" className="font-bold hover:text-rgb(var(--color-primary))">
+            <Link
+              to="/contact"
+              className="hover:text-rgb(var(--color-primary))"
+            >
               Contact
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2"
-            >
+            <button onClick={() => setIsOpen(!isOpen)} className="p-2 border-0">
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { X } from "lucide-react";
 import { images as imgs } from "../images";
+import Card from "../components/Card";
 
 const images = imgs.map((url) => `${url}?auto=format&fit=crop&w=800&q=80`);
 
@@ -52,26 +53,28 @@ function ImageSlideshow2Line1() {
     // Create 4 sets of images to ensure smooth transition
     const sets = [...images, ...images, ...images, ...images];
     return sets.map((img, i) => (
-      <div
-        key={`${img}-${i}`}
-        className="w-[300px] h-[300px] flex-shrink-0 cursor-pointer overflow-hidden rounded-lg"
-        onClick={() => setSelectedImage(img)}
-      >
-        <img
-          src={img}
-          alt={`Landscape ${i}`}
-          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-          loading="eager"
-        />
-      </div>
+      <Card>
+        <div
+          key={`${img}-${i}`}
+          className="w-[300px] h-[300px] flex-shrink-0 cursor-pointer overflow-hidden rounded-lg"
+          onClick={() => setSelectedImage(img)}
+        >
+          <img
+            src={img}
+            alt={`Landscape ${i}`}
+            className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+            loading="eager"
+          />
+        </div>
+      </Card>
     ));
   };
 
   return (
-    <div className="min-h-screen text-white overflow-hidden">
+    <div className="min-h-screen text-white overflow-hidden flex flex-col items-center justify-center mt-8">
       {/* Top moving line */}
-      <div className="relative h-[300px] mt-20">
-        <div className="absolute w-full overflow-hidden">
+      <div className="h-content">
+        <div className=" w-full overflow-hidden">
           <div
             className="flex gap-4 will-change-transform"
             style={{
@@ -86,8 +89,8 @@ function ImageSlideshow2Line1() {
       </div>
 
       {/* Bottom moving line - now moving in opposite direction */}
-      <div className="relative h-[300px] mt-20">
-        <div className="absolute w-full overflow-hidden">
+      <div className="h-content mt-10">
+        <div className=" w-full overflow-hidden">
           <div
             className="flex gap-4 will-change-transform"
             style={{

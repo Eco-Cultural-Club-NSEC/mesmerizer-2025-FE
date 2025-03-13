@@ -123,13 +123,6 @@ const ImageSlideshow = () => {
           />
         ))}
       </div>
-
-      {/* Pause Indicator */}
-      {/* {isPaused && (
-        <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm backdrop-blur-sm z-20">
-          Paused
-        </div>
-      )} */}
     </div>
   );
 };
