@@ -5,15 +5,14 @@ import SocialMediaButtons from "./SocialMediaButtons";
 const Footer = () => {
   return (
     <footer
-      className="dark:bg-zinc-900 border-t-4 border-black dark:border-white mt-auto text-blue-900"
+      className="dark:bg-zinc-900 mt-auto text-blue-900"
       style={{
-        backgroundImage:
-          "url('/pics/forsaken_alleyway_in_a_ruined_city.jpg')",
+        backgroundImage: "url('/pics/Footer.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
         <Card className="border-0 hover:shadow-none justify-around px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
@@ -21,7 +20,7 @@ const Footer = () => {
                 MESMERIZER'25
               </Link>{" "}
               <p className="mt-4">
-                Where Culture Meets Creativity. Join us for three days of music,
+                Where Culture Meets Creativity. Join us for two days of music,
                 dance, art, and more at the biggest cultural festival of the
                 year.
               </p>

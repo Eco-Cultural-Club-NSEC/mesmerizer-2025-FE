@@ -1,11 +1,5 @@
 import { useState, useRef, ChangeEvent, DragEvent } from "react";
-import {
-  ImagePlus,
-  Upload,
-  X,
-  File as FileIcon,
-  Maximize2,
-} from "lucide-react";
+import { ImagePlus, Upload, X, File as FileIcon } from "lucide-react";
 import {
   Controller,
   Control,
@@ -32,7 +26,7 @@ const FileUploadField = <T extends FieldValues>({
   const [file, setFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [showLargePreview, setShowLargePreview] = useState<boolean>(false);
+  // const [showLargePreview, setShowLargePreview] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
@@ -54,6 +48,13 @@ const FileUploadField = <T extends FieldValues>({
 
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       handleFile(e.dataTransfer.files[0], onChange);
+    }
+
+    // Manually update the file input's files property to properly trigger the onChange event
+    const dataTransfer = new DataTransfer();
+    dataTransfer.items.add(e.dataTransfer.files[0]);
+    if (fileInputRef.current) {
+      fileInputRef.current.files = dataTransfer.files;
     }
   };
 
@@ -84,7 +85,7 @@ const FileUploadField = <T extends FieldValues>({
   const handleRemoveFile = (onChange: (file: File | null) => void) => {
     setFile(null);
     setPreviewUrl(null);
-    setShowLargePreview(false);
+    // setShowLargePreview(false);
     onChange(null); // Clear the value in React Hook Form
 
     if (fileInputRef.current) {
@@ -99,14 +100,14 @@ const FileUploadField = <T extends FieldValues>({
       rules={{ required: required ? "Please upload a valid image" : false }}
       render={({ field: { onChange } }) => (
         <div className="mb-4">
-          <label htmlFor={name} className="flex items-center font-bold mb-2">
+          <label htmlFor={name} className="flex items-center mb-2">
             <ImagePlus className="mr-2 text-[rgb(var(--color-accent))]" />
             {label || "Upload Screenshot"}
           </label>
 
-          {previewUrl && showLargePreview && (
+          {/* {previewUrl && showLargePreview && (
             <div className="mb-4">
-              <div className="relative aspect-video w-full rounded-lg overflow-hidden bg-gray-100 mb-2">
+              <div className="relative aspect-video w-full rounded-lg overflow-hidden bg-white mb-2">
                 <img
                   src={previewUrl}
                   alt="Large Preview"
@@ -121,15 +122,14 @@ const FileUploadField = <T extends FieldValues>({
                 </button>
               </div>
             </div>
-          )}
+          )} */}
 
           <div
-            className={`relative border-4 transition-all duration-200 ease-in-out
-              ${
-                isDragging
-                  ? "border-[rgb(var(--color-accent))] bg-[rgb(var(--color-accent))]/10 scale-102"
-                  : "border-black hover:bg-[rgb(var(--color-accent))]/10"
-              } ${file ? "p-4" : "p-6"}`}
+            className={`relative border-2 rounded-lg transition-all duration-200 ease-in-out ${
+              isDragging
+                ? "border-white bg-white/50 scale-102"
+                : "border-white/50 hover:bg-white/10"
+            } ${file ? "p-4" : "p-6"}`}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onDrop={(e) => handleDrop(e, onChange)}
@@ -142,25 +142,24 @@ const FileUploadField = <T extends FieldValues>({
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
               accept="image/*"
             />
-
             {file ? (
               <div className="flex items-center space-x-4">
                 {previewUrl ? (
                   <div className="relative group">
-                    <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+                    <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                       <img
                         src={previewUrl}
                         alt="Preview"
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <button
+                    {/* <button
                       type="button"
                       onClick={() => setShowLargePreview(true)}
                       className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center"
                     >
                       <Maximize2 className="w-6 h-6 text-white" />
-                    </button>
+                    </button> */}
                   </div>
                 ) : (
                   <div className="w-16 h-16 rounded-lg bg-[rgb(var(--color-accent))]/10 flex items-center justify-center flex-shrink-0">
@@ -168,28 +167,24 @@ const FileUploadField = <T extends FieldValues>({
                   </div>
                 )}
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold text-gray-900 truncate">
-                    {file.name}
-                  </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-base text-white truncate">{file.name}</p>
+                  <p className="text-sm text-white/70 mt-1">
                     {(file.size / 1024 / 1024).toFixed(2)} MB
                   </p>
                 </div>
                 <button
                   type="button"
                   onClick={() => handleRemoveFile(onChange)}
-                  className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+                  className="p-2 rounded-full bg-transparent border-white hover:bg-white/50 transition-colors z-20"
                 >
-                  <X className="w-5 h-5 text-gray-500" />
+                  <X className="w-5 h-5 text-white" />
                 </button>
               </div>
             ) : (
-              <div className="text-center">
-                <Upload className="mx-auto h-10 w-10 text-gray-400" />
-                <p className="mt-2 text-sm font-medium text-gray-600">
-                  Drag and drop your file here
-                </p>
-                <p className="mt-1 text-xs text-gray-500">or click to browse</p>
+              <div className="text-center text-white/70">
+                <Upload className="mx-auto h-10 w-10" />
+                <p className="mt-2 text-sm">Drag and drop your file here</p>
+                <p className="mt-1 text-xs">or click to browse</p>
               </div>
             )}
           </div>

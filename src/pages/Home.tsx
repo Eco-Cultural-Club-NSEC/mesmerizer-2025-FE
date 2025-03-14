@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useMemo } from "react";
+// import { motion } from "framer-motion";
 import {
   ArrowRight,
   Calendar,
@@ -9,21 +9,15 @@ import {
   Camera,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import {
-  differenceInDays,
-  differenceInHours,
-  differenceInMinutes,
-  differenceInSeconds,
-} from "date-fns";
 import { events } from "../data";
 import Card from "../components/Card";
 import Button from "../components/Button";
 import EventCard from "../components/EventCard";
-import ImageSlideshow2Line1 from "./ImageSlideshow2Line";
+import ImageSlideshow2Line from "./ImageSlideshow2Line";
 import Button2 from "../components/Button2";
 // import Button3 from "../components/Button3";
 
-const eventDate = new Date("2025-04-01");
+const eventDate = new Date("2025-04-01").getTime();
 
 const featuredEvents = events.slice(0, 3);
 
@@ -35,61 +29,98 @@ const Home = () => {
     seconds: 0,
   });
 
+  // Memoize the countdown calculation
+  const calculateTimeLeft = useMemo(() => {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    return {
+      days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+      minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+      seconds: Math.floor((distance % (1000 * 60)) / 1000),
+    };
+  }, []);
+
   useEffect(() => {
+    // Initial calculation
+    setTimeLeft(calculateTimeLeft);
+
+    // Update every second
     const timer = setInterval(() => {
-      const now = new Date();
-      setTimeLeft({
-        days: differenceInDays(eventDate, now),
-        hours: differenceInHours(eventDate, now) % 24,
-        minutes: differenceInMinutes(eventDate, now) % 60,
-        seconds: differenceInSeconds(eventDate, now) % 60,
-      });
+      setTimeLeft((prev) => ({
+        ...prev,
+        seconds: prev.seconds === 0 ? 59 : prev.seconds - 1,
+        minutes:
+          prev.seconds === 0
+            ? prev.minutes === 0
+              ? 59
+              : prev.minutes - 1
+            : prev.minutes,
+        hours:
+          prev.minutes === 0 && prev.seconds === 0
+            ? prev.hours === 0
+              ? 23
+              : prev.hours - 1
+            : prev.hours,
+        days:
+          prev.hours === 0 && prev.minutes === 0 && prev.seconds === 0
+            ? prev.days - 1
+            : prev.days,
+      }));
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [calculateTimeLeft]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
+    // <motion.div
+    //   initial={{ opacity: 0 }}
+    //   animate={{ opacity: 1 }}
+    //   exit={{ opacity: 0 }}
+    // >
+    <main>
       {/* Hero Section with Comic Pattern */}
       <section
-        className="relative h-screen flex items-center justify-center hero-pattern max-md:h-auto max-md:pb-20"
+        className="relative h-screen flex items-center justify-center hero-pattern max-md:h-auto max-md:pb-20 border-b-[10px] border-black"
         style={{
-          backgroundImage:
-            "url('/pics/Copy of Mesmerizer 2024 SB Final_III.pdf (32).svg')",
+          backgroundImage: "url('/pics/Main_Theme_Hero.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-md:pt-[20vh]">
-          <motion.h1
+          {/* <motion.h1
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
             className="text-5xl sm:text-6xl md:text-8xl font-black mb-4 text-custom-white dark:text-white "
-          >
+          > */}
+          <div className="text-5xl sm:text-6xl md:text-8xl font-black mb-4 text-custom-white dark:text-white ">
             Mesmerizer'25
-          </motion.h1>
-          <motion.p
+          </div>
+
+          {/* </motion.h1> */}
+          {/* <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
             className="text-xl md:text-2xl mb-8 text-custom-white dark:text-white"
           >
             Where Culture Meets Creativity
-          </motion.p>
+          </motion.p> */}
+          <div className="text-xl md:text-2xl mb-8 text-custom-white dark:text-white">
+            Where Culture Meets Creativity
+          </div>
 
           {/* Countdown Timer */}
-          <motion.div
+          {/* <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6 }}
             className="grid grid-cols-2 md:grid-cols-4 gap-4 max-sm:w-[80vw] mx-auto mb-8 text-white"
-          >
+          > */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-sm:w-[80vw] mx-auto mb-8 text-white">
             <div className="flex justify-center items-center">
               <div className="glass-box w-24 h-24 flex flex-col justify-center items-center">
                 <span className="text-3xl">{timeLeft.days}</span>
@@ -114,14 +145,16 @@ const Home = () => {
                 <span className="text-sm">SECONDS</span>
               </div>
             </div>
-          </motion.div>
+          </div>
+          {/* </motion.div> */}
 
-          <motion.div
+          {/* <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8 }}
             className="space-x-4 flex text-white justify-around max-sm:flex-col items-center max-sm:pr-4"
-          >
+          > */}
+          <div className="space-x-4 flex text-white justify-around max-sm:flex-col items-center max-sm:pr-4">
             <Link to="/events" className="max-sm:ml-4">
               <Button className="">
                 Explore Events <ArrowRight className="ml-2" />
@@ -132,15 +165,16 @@ const Home = () => {
                 Register Now <Star className="ml-2" />
               </Button>
             </Link>
-          </motion.div>
+          </div>
+          {/* </motion.div> */}
         </div>
       </section>
 
       {/* About Section */}
       <section
-        className="py-20 pattern-zigzag h-content md:h-screen flex items-center border-b-[20px] border-black"
+        className="py-20 pattern-zigzag h-content md:h-screen flex items-center border-b-[10px] border-black"
         style={{
-          backgroundImage: "url('/pics/Firefly 20250208005858.svg')",
+          backgroundImage: "url('/pics/About_us.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -201,9 +235,9 @@ const Home = () => {
 
       {/* Featured Events */}
       <section
-        className="py-20 pattern-bubbles h-content flex items-center text-white"
+        className="py-20 pattern-bubbles h-content flex items-center text-white  border-b-[10px] border-black"
         style={{
-          backgroundImage: "url('/pics/Firefly 20250210194301.svg')",
+          backgroundImage: "url('/pics/Events.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -226,22 +260,23 @@ const Home = () => {
       </section>
 
       {/* Gallery Glimpse */}
-      <section
-        className="py-20 pattern-circuit text-white"
-        style={{
-          backgroundImage:
-            "url('/pics/Leonardo_Anime_XL_A_dark_apocalyptic_city_at_night_filled_with_1_enhanced.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 pattern-circuit text-white  border-b-[10px] border-black">
+        {/* Background with overlay */}
+        <div
+          className="absolute inset-0 before:absolute before:inset-0 before:bg-black before:opacity-50 before:z-0"
+          style={{
+            backgroundImage: "url('/pics/Gallery.webp')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        ></div>
+        <div className="relative z-10 w-full">
           <div className="text-center">
             <h2 className="text-4xl font-black mb-4">Gallery</h2>
             <p className="text-xl">Moments from previous editions</p>
           </div>
 
-          <ImageSlideshow2Line1 />
+          <ImageSlideshow2Line />
           <Link to="/gallery" className="flex justify-center mt-8">
             <Button2 className="flex">
               View Full Gallery <Camera className="ml-2" />
@@ -270,33 +305,36 @@ const Home = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {sponsors.map((sponsor) => (
-              <motion.div
-                key={sponsor.id}
-                whileHover={{ scale: 1.05 }}
-                className="neo-card flex items-center justify-center p-8"
-              >
+              // <motion.div
+              //   key={sponsor.id}
+              //   whileHover={{ scale: 1.05 }}
+              //   className="neo-card flex items-center justify-center p-8"
+              // >
+              <div className="neo-card flex items-center justify-center p-8">
                 <img
                   src={sponsor.logo}
                   alt={sponsor.name}
                   className="max-h-16 w-auto"
                 />
-              </motion.div>
+              </div>
+              // </motion.div>
             ))}
           </div>
         </div>
       </section> */}
 
       {/* Ready to Join */}
-      <section
-        className="py-20 pattern-comic text-white"
-        style={{
-          backgroundImage:
-            "url('/pics/A_desolate_fogcovered_forest_at_night.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative py-20 pattern-comic text-white  border-b-[10px] border-black">
+        {/* Background with overlay */}
+        <div
+          className="absolute inset-0 before:absolute before:inset-0 before:bg-black before:opacity-40 before:z-0"
+          style={{
+            backgroundImage: "url('/pics/Register_Now.webp')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        ></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-black mb-4">Ready to Join the Fun?</h2>
           <p className="text-xl mb-8">
             Don't miss out on this incredible experience!
@@ -308,7 +346,8 @@ const Home = () => {
           </Link>
         </div>
       </section>
-    </motion.div>
+    </main>
+    // </motion.div>
   );
 };
 

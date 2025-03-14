@@ -1,14 +1,20 @@
 import { ReactNode } from "react";
-import './Button2.css'
+import "./Button2.css";
 
 interface Button2Props {
   children: ReactNode;
   className?: string;
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
 }
 
-const Button2 = ({ className, children }: Button2Props) => {
+const Button2 = ({ className, type, children, onClick }: Button2Props) => {
   return (
-    <button className={`relative px-[35px] py-[12px] bg-white text-[17px] font-medium text-[#181818] border-[3px] border-white rounded-lg shadow-[0_0_0_#fec1958c] transition-all duration-300 ease-in-out cursor-pointer ${className}`}>
+    <button
+      type={type}
+      className={`relative px-[35px] py-[12px] bg-white text-[17px] font-medium text-[#181818] border-[3px] border-white rounded-lg shadow-[0_0_0_#fec1958c] transition-all duration-300 ease-in-out cursor-pointer ${className}`}
+      onClick={onClick}
+    >
       {children}
       <div className="star-1">
         <svg

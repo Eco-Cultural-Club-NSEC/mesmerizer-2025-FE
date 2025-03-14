@@ -2,10 +2,12 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { X } from "lucide-react";
 import { images as imgs } from "../images";
 import Card from "../components/Card";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const images = imgs.map((url) => `${url}?auto=format&fit=crop&w=800&q=80`);
 
-function ImageSlideshow2Line1() {
+function ImageSlideshow2({ className }: { className?: string }) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [scrollPosition1, setScrollPosition1] = useState(0);
   const [scrollPosition2, setScrollPosition2] = useState(0);
@@ -71,36 +73,34 @@ function ImageSlideshow2Line1() {
   };
 
   return (
-    <div className="min-h-screen text-white overflow-hidden flex flex-col items-center justify-center mt-8">
+    <div
+      className={`min-h-screen text-white overflow-hidden flex flex-col items-center justify-center mt-8 w-full ${className}`}
+    >
       {/* Top moving line */}
-      <div className="h-content">
-        <div className=" w-full overflow-hidden">
-          <div
-            className="flex gap-4 will-change-transform"
-            style={{
-              transform: `translateX(-${scrollPosition1}px)`,
-              width: `${imageSetWidth * 4}px`, // Increased to 4 sets
-              transition: "transform 0.1s linear",
-            }}
-          >
-            {renderImages()}
-          </div>
+      <div className="h-content overflow-hidden">
+        <div
+          className="flex gap-4 will-change-transform"
+          style={{
+            transform: `translateX(-${scrollPosition1}px)`,
+            width: `${imageSetWidth * 4}px`, // Increased to 4 sets
+            transition: "transform 0.1s linear",
+          }}
+        >
+          {renderImages()}
         </div>
       </div>
 
       {/* Bottom moving line - now moving in opposite direction */}
-      <div className="h-content mt-10">
-        <div className=" w-full overflow-hidden">
-          <div
-            className="flex gap-4 will-change-transform"
-            style={{
-              transform: `translateX(${scrollPosition2}px)`,
-              width: `${imageSetWidth * 4}px`, // Increased to 4 sets
-              transition: "transform 0.1s linear",
-            }}
-          >
-            {renderImages()}
-          </div>
+      <div className="h-content mt-10  w-full overflow-hidden">
+        <div
+          className="flex gap-4 will-change-transform"
+          style={{
+            transform: `translateX(${scrollPosition2}px)`,
+            width: `${imageSetWidth * 4}px`, // Increased to 4 sets
+            transition: "transform 0.1s linear",
+          }}
+        >
+          {renderImages()}
         </div>
       </div>
 
@@ -119,10 +119,11 @@ function ImageSlideshow2Line1() {
           >
             <X size={32} />
           </button>
-          <img
+          <LazyLoadImage
             src={selectedImage}
             alt="Selected landscape"
             className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg"
+            effect="blur"
           />
         </div>
       )}
@@ -130,4 +131,4 @@ function ImageSlideshow2Line1() {
   );
 }
 
-export default ImageSlideshow2Line1;
+export default ImageSlideshow2;

@@ -19,7 +19,7 @@ const images = [
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741610358/mesmerizer/event_pic/om7ckomgmxrtyqnvvxfe.jpg",
 ];
 
-const ImageSlideshow = () => {
+const ImageSlideshow = ({ className }: { className?: string }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -66,7 +66,7 @@ const ImageSlideshow = () => {
 
   return (
     <div
-      className="relative w-full max-w-7xl mx-auto h-[600px] overflow-hidden"
+      className={`relative w-full max-w-7xl mx-auto h-[600px] overflow-hidden ${className}`}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -75,7 +75,7 @@ const ImageSlideshow = () => {
         {images.map((image, index) => (
           <div
             key={image}
-            className="absolute top-0 left-0 w-full h-full transition-all duration-500 ease-out cursor-pointer"
+            className="absolute top-0 left-0 w-full h-full transition-all duration-500 ease-out"
             style={{
               ...getSlideStyle(index),
             }}
@@ -95,32 +95,32 @@ const ImageSlideshow = () => {
       {/* Navigation Buttons */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300 z-20"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300 z-20 focus:outline-none border-0"
         aria-label="Previous slide"
       >
         <ChevronLeft size={28} />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300 z-20"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300 z-20 border-0"
         aria-label="Next slide"
       >
         <ChevronRight size={28} />
       </button>
 
       {/* Progress Indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2 max-sm:w-[85dvw] items-center justify-center">
         {images.map((_, index) => (
-          <button
+          <div
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
+            className={`h-1.5 cursor-pointer rounded-full transition-all duration-300 ${
               currentIndex === index
                 ? "w-8 bg-white"
                 : "w-4 bg-white/50 hover:bg-white/75"
             }`}
             aria-label={`Go to slide ${index + 1}`}
-          />
+          ></div>
         ))}
       </div>
     </div>

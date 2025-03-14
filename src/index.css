@@ -1,6 +1,7 @@
 @font-face {
+  font-display: swap;
   font-family: "morbithrone";
-  src: url("./assets/fonts/MorbithronePersonalUse.woff") format("woff");
+  src: url("/fonts/MorbithronePersonalUse.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
