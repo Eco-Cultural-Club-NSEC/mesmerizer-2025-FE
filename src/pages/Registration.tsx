@@ -16,6 +16,8 @@ import { Event } from "../types";
 import FileUploadField from "./FileUploadField";
 import Card from "../components/Card";
 import Button2 from "../components/Button2";
+import { toast } from "sonner";
+import { registerParticipant } from "../services/registration";
 
 interface RegistrationForm {
   eventTitle: string;
@@ -80,11 +82,49 @@ const Registration = () => {
     }
   };
 
-  const onSubmit = (data: RegistrationForm) => {
-    console.log("Submitted Data:", {
-      ...data,
-      paySS: data.paySS ?? "No file uploaded",
-    });
+  const onSubmit = async (data: RegistrationForm) => {
+    try {
+      // Validate participant names
+      const validParticipants = data.participantNames.filter((p) =>
+        p.name.trim()
+      );
+      if (validParticipants.length === 0) {
+        toast.error("At least one valid participant name is required");
+        return;
+      }
+
+      // Use hardcoded Cloudinary URL instead of uploading
+      const paymentScreenshotUrl =
+        "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742021216/mesmerizer/payment_ss/pys4kgr1d5fbinhmswrw.jpg";
+
+      // Get event details from the selected event
+      const selectedEvent = event || events[0];
+
+      // Prepare registration data
+      const registrationData = {
+        eventTitle: selectedEvent.title,
+        eventCode: selectedEvent.code || "",
+        eventDay: selectedEvent.date,
+        eventTime: selectedEvent.time,
+        eventLocation: selectedEvent.location || "",
+        teamSize: validParticipants.length, // Use validated participants length
+        teamLeadName: validParticipants[0], // First valid participant is team lead
+        participantNames: validParticipants,
+        email: data.email,
+        whatsappNumber: data.whatsappNumber,
+        alternatePhone: data.alternatePhone,
+        college: data.college,
+        upiTransectionId: data.upiTransectionId,
+        paySS: paymentScreenshotUrl,
+      };
+
+      // Submit registration
+      const response = await registerParticipant(registrationData);
+      toast.success("Registration successful!");
+    } catch (error: any) {
+      toast.error(error.message || "Registration failed");
+      console.error("Registration error:", error);
+    }
   };
 
   return (
