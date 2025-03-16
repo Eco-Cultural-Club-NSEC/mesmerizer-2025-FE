@@ -13,12 +13,6 @@ const Contact = () => {
   };
 
   return (
-    // <motion.div
-    //   initial={{ opacity: 0 }}
-    //   animate={{ opacity: 1 }}
-    //   exit={{ opacity: 0 }}
-    //   className="pt-24 pb-16 contact-pattern"
-    // >
     <section className="pt-24 pb-16 contact-pattern text-white">
       <div
         className="h-screen w-full fixed left-0 bg-cover bg-center inset-0 before:fixed before:inset-0 before:bg-black before:opacity-20 before:z-0"
@@ -134,39 +128,12 @@ const Contact = () => {
 
             <Card className="hover:shadow-none">
               <h2 className="text-2xl">Follow Us</h2>
-              {/* <div className="flex space-x-4">
-                <a
-                  href="https://instagram.com/cultfest"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="neo-button p-3 hover:bg-[rgb(var(--color-primary))] hover:text-white"
-                >
-                  <Instagram />
-                </a>
-                <a
-                  href="https://twitter.com/cultfest"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="neo-button p-3 hover:bg-[rgb(var(--color-secondary))] hover:text-white"
-                >
-                  <Twitter />
-                </a>
-                <a
-                  href="https://facebook.com/cultfest"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="neo-button p-3 hover:bg-[rgb(var(--color-accent))] hover:text-white"
-                >
-                  <Facebook />
-                </a>
-              </div> */}
               <SocialMediaButtons />
             </Card>
           </div>
         </div>
       </div>
     </section>
-    // </motion.div>
   );
 };
 

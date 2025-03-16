@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-// import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,9 +36,6 @@ const Navbar = () => {
             <Link to="/events" className="hover:text-rgb(var(--color-primary))">
               Events
             </Link>
-            {/* <Link to="/team" className="hover:text-rgb(var(--color-primary))">
-              Team
-            </Link> */}
             <Link
               to="/gallery"
               className="hover:text-rgb(var(--color-primary))"
@@ -56,7 +52,10 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center relative z-50">
-            <button onClick={() => setIsOpen(!isOpen)} className="p-2 border-0 bg-transparent text-white ">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 border-0 bg-transparent text-white "
+            >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -65,15 +64,9 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        // <motion.div
-        //   initial={{ opacity: 0, y: -20 }}
-        //   animate={{ opacity: 1, y: 0 }}
-        //   exit={{ opacity: 0, y: -20 }}
-        //   className="md:hidden"
-        // >
-        <div className="md:hidden bg-black/50 backdrop-blur-md fixed w-full top-0 left-0">
+        <div className="md:hidden fixed top-0 left-0 w-full z-40 bg-black">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <Link
+            <Link
               to="/"
               className="block px-2 py-4 rounded-md text-3xl font-medium"
               onClick={() => setIsOpen(false)}
@@ -87,13 +80,6 @@ const Navbar = () => {
             >
               Events
             </Link>
-            {/* <Link
-              to="/team"
-              className="block px-3 py-2 rounded-md text-base font-medium"
-              onClick={() => setIsOpen(false)}
-            >
-              Team
-            </Link> */}
             <Link
               to="/gallery"
               className="block px-3 py-2 rounded-md text-base font-medium"
@@ -110,7 +96,6 @@ const Navbar = () => {
             </Link>
           </div>
         </div>
-        // {/* </motion.div> */}
       )}
     </nav>
   );

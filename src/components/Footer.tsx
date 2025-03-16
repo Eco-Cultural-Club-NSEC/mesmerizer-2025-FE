@@ -5,7 +5,7 @@ import SocialMediaButtons from "./SocialMediaButtons";
 const Footer = () => {
   return (
     <footer
-      className="dark:bg-zinc-900 mt-auto text-blue-900"
+      className="mt-auto text-white"
       style={{
         backgroundImage: "url('/pics/Footer.webp')",
         backgroundSize: "cover",
@@ -92,7 +92,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t-2 border-white dark:border-white text-center">
+          <div className="mt-12 pt-8 border-t-2 border-white text-center">
             <p>2025 MESMERIZER. ECO-CULTURAL CLUB, NSEC, KOLKATA.</p>
           </div>
         </Card>

@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Card from "./Card";
 
 const images = [
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741610352/mesmerizer/event_pic/isgxizmwavktzeq1bx1q.jpg",
@@ -80,14 +81,13 @@ const ImageSlideshow = ({ className }: { className?: string }) => {
               ...getSlideStyle(index),
             }}
           >
-            <div
-              className="w-full h-full rounded-2xl shadow-2xl overflow-hidden"
-              style={{
-                backgroundImage: `url(${image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            />
+            <Card className="w-full h-full rounded-3xl hover:shadow-none ">
+              <img
+                src={image}
+                alt="Slideshow"
+                className="w-full h-full rounded-2xl shadow-2xl object-cover object-center"
+              />
+            </Card>
           </div>
         ))}
       </div>

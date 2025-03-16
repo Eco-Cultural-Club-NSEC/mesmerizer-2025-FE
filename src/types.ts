@@ -3,16 +3,16 @@ export interface Event {
   title: string;
   date: string;
   time: string;
-  image: string | null;
-  location: string | null;
-  tagline: string | null;
-  code: string | null;
-  entryFees: string | null;
-  coordinators: { name: string; contact: string }[] | null;
-  rules: string[] | null;
+  image: string;
+  location: string;
+  tagline: string;
+  code: string;
+  entryFees: string;
+  coordinators: { name: string; contact: string }[];
+  rules: string[];
   teamSize: {
-    min: number | null;
-    max: number | null;
+    min: number;
+    max: number;
   };
 }
 
@@ -32,7 +32,7 @@ export interface Sponsor {
   id: string;
   name: string;
   logo: string;
-  tier: 'platinum' | 'gold' | 'silver';
+  tier: "platinum" | "gold" | "silver";
 }
 
 export interface FAQ {

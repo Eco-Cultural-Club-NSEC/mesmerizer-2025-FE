@@ -1,4 +1,3 @@
-// import { motion } from "framer-motion";
 import { useFieldArray, useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import {
@@ -7,44 +6,72 @@ import {
   Phone,
   Building2,
   Trophy,
-  BadgePlus,
   BadgeIndianRupee,
+  HandCoins,
+  UserPlus,
+  UserMinus,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { events } from "../data";
 import { Event } from "../types";
-import FileUploadField from "./FileUploadField";
+import FileUploadField from "../components/FileUploadField";
 import Card from "../components/Card";
 import Button2 from "../components/Button2";
+import { uploadToCloudinary, deleteFromCloudinary } from "../utils/cloudinary";
+import useProgressiveImage from "../hooks/useProgressiveImage";
 
-interface RegistrationForm {
-  eventTitle: string;
-  participantNames: { name: string }[];
+interface RegistrationFormInput {
+  name: { name: string }[];
   email: string;
-  whatsappNumber: string;
-  alternatePhone: string;
-  college: string;
-  paySS: File | null;
-  upiTransectionId: string;
+  whatsapp_no: string;
+  alt_phone: string;
+  event: string;
+  collage_name: string;
+  amount_paid: number;
+  transaction_id: string;
+  transaction_screenshot: File | null;
+}
+
+interface RegistrationFormSend {
+  name: string[];
+  email: string;
+  whatsapp_no: string;
+  alt_phone: string;
+  event: string;
+  event_date: string;
+  event_location: string;
+  collage_name: string;
+  amount_paid: number;
+  transaction_id: string;
+  transaction_screenshot: string;
+}
+
+interface CustomFileInput extends HTMLInputElement {
+  reset: () => void;
 }
 
 const Registration = () => {
+  const eventImg_lazy = "/pics/lazy_imgs/Events_lazy.webp";
+  const eventImg_main = "/pics/Events.webp";
+  const eventSrc = useProgressiveImage(eventImg_lazy, eventImg_main);
+
   const location = useLocation();
   const preSelectedEventId = location.state?.eventId;
-  const [event, setEvent] = useState<Event | undefined>(
-    events.find((e) => e.id === preSelectedEventId)
+  const [event, setEvent] = useState<Event>(
+    events.find((e) => e.id === preSelectedEventId) || events[0]
   );
 
   const {
     register,
     control,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<RegistrationForm>();
+  } = useForm<RegistrationFormInput>();
 
-  const { fields, append, replace } = useFieldArray({
+  const { fields, append, remove, replace } = useFieldArray({
     control,
-    name: "participantNames",
+    name: "name",
   });
 
   useEffect(() => {
@@ -71,7 +98,6 @@ const Registration = () => {
       const initialSize = firstEvent?.teamSize.min ?? 1;
       replace(Array.from({ length: initialSize }, () => ({ name: "" })));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [event]);
 
   const addParticipant = () => {
@@ -80,25 +106,112 @@ const Registration = () => {
     }
   };
 
-  const onSubmit = (data: RegistrationForm) => {
-    console.log("Submitted Data:", {
-      ...data,
-      paySS: data.paySS ?? "No file uploaded",
-    });
+  const removeParticipant = () => {
+    if (fields.length > event.teamSize.min) {
+      remove(fields.length - 1);
+    }
+  };
+
+  const onSubmit = async (data: RegistrationFormInput) => {
+    let uploadedImageData = null;
+    try {
+      // Show loading state
+      const submitButton = document.querySelector(
+        'button[type="submit"]'
+      ) as HTMLButtonElement;
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Uploading...";
+      }
+
+      // Upload image to Cloudinary if exists
+      if (data.transaction_screenshot) {
+        uploadedImageData = await uploadToCloudinary(
+          data.transaction_screenshot
+        );
+      }
+
+      if (!uploadedImageData) {
+        throw new Error("Transaction screenshot upload failed");
+      }
+
+      // Prepare data for backend
+      const submissionData: RegistrationFormSend = {
+        name: data.name.map((n) => n.name),
+        email: data.email,
+        whatsapp_no: data.whatsapp_no,
+        alt_phone: data.alt_phone,
+        event: data.event,
+        event_date: event?.date,
+        event_location: event.location,
+        collage_name: data.collage_name,
+        amount_paid: data.amount_paid,
+        transaction_id: data.transaction_id,
+        transaction_screenshot: uploadedImageData.secure_url,
+      };
+      console.log(submissionData);
+
+      const response = await fetch(
+        `https://api.mesmerizernsec.club/api/v1/participants/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(submissionData),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Registration failed");
+      }
+
+      // Handle success
+      alert("Registration successful!");
+      // Reset all form fields
+      reset();
+      // Reset event selection
+      setEvent(events[0]);
+      // Reset participant fields to initial state
+      const firstEvent = events[0];
+      const initialSize = firstEvent?.teamSize.min ?? 1;
+      replace(Array.from({ length: initialSize }, () => ({ name: "" })));
+      // Reset file field
+      const fileInput = document.querySelector(
+        'input[type="file"]'
+      ) as CustomFileInput;
+      if (fileInput && fileInput.reset) {
+        fileInput.reset();
+      }
+    } catch (error) {
+      // Delete uploaded image if registration failed
+      if (uploadedImageData?.public_id) {
+        try {
+          await deleteFromCloudinary(uploadedImageData.public_id);
+        } catch (deleteError) {
+          console.error("Error deleting image:", deleteError);
+        }
+      }
+      console.error("Error during registration:", error);
+      alert("Registration failed. Please try again.");
+    } finally {
+      // Reset button state
+      const submitButton = document.querySelector(
+        'button[type="submit"]'
+      ) as HTMLButtonElement;
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Registration";
+      }
+    }
   };
 
   return (
-    // <motion.div
-    //   initial={{ opacity: 0 }}
-    //   animate={{ opacity: 1 }}
-    //   exit={{ opacity: 0 }}
-    //   className="pt-24 pb-16 registration-container"
-    // >
     <section className="pt-24 pb-16 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
       <div
-        className="h-screen w-full fixed top-0 left-0 bg-cover bg-center"
+        className="h-screen w-full fixed top-0 left-0 bg-cover bg-center transition-opacity duration-500 ease-in-out"
         style={{
-          backgroundImage: 'url("/pics/Events.webp")',
+          backgroundImage: `url(${eventSrc})`,
         }}
       ></div>
       <div className="text-center mb-12 relative z-10">
@@ -113,12 +226,6 @@ const Registration = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-8 relative z-10"
       >
-        {/* <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="neo-card bg-gradient-to-br from-[rgb(var(--color-secondary))]/5 to-transparent"
-        > */}
         <Card className="hover:shadow-none">
           <h2 className="text-2xl mb-6">Event Registration</h2>
           <div className="space-y-6">
@@ -129,12 +236,15 @@ const Registration = () => {
               </label>
               <div className="relative">
                 <select
-                  {...register("eventTitle", {
+                  {...register("event", {
                     required: "Please select an event",
                   })}
                   value={event?.title}
                   onChange={(v) => {
-                    setEvent(events.find((e) => e.title === v.target.value));
+                    setEvent(
+                      events.find((e) => e.title === v.target.value) ||
+                        events[0]
+                    );
                   }}
                   className="w-full p-4 cursor-pointer bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
                 >
@@ -157,21 +267,15 @@ const Registration = () => {
                   ))}
                 </select>
               </div>
-              {errors.eventTitle && (
+              {errors.event && (
                 <p className="text-[rgb(var(--color-primary))] mt-2">
-                  {errors.eventTitle.message}
+                  {errors.event.message}
                 </p>
               )}
             </div>
           </div>
         </Card>
-        {/* </motion.div> */}
 
-        {/* <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          className="neo-card bg-gradient-to-br from-[rgb(var(--color-primary))]/5 to-transparent"
-        > */}
         <Card className="hover:shadow-none">
           <h2 className="text-2xl mb-6">Team Information</h2>
           <div className="space-y-6">
@@ -185,33 +289,40 @@ const Registration = () => {
                     <User className="mr-2 text-[rgb(var(--color-primary))]" />
                     Participant Name {index + 1}
                   </label>
-                  {/* <motion.div
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.8 }}
-                    onClick={addParticipant}
-                    className="cursor-pointer"
-                  > */}
-                  <div
-                    className="pt-1 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-125 active:scale-75"
-                    onClick={addParticipant}
-                  >
-                    <BadgePlus className="text-[rgb(var(--color-primary))] text-lg" />
+
+                  <div className="flex items-center gap-5">
+                    <div
+                      className="pt-1 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-125 active:scale-75"
+                      onClick={addParticipant}
+                    >
+                      <UserPlus className="text-[rgb(var(--color-primary))]" />
+                    </div>
+                    <div
+                      className="pt-1 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-125 active:scale-75"
+                      onClick={removeParticipant}
+                    >
+                      <UserMinus className="text-[rgb(var(--color-primary))]" />
+                    </div>
                   </div>
-                  {/* </motion.div> */}
                 </div>
                 <input
                   type="text"
                   id={`participant${index}`}
                   placeholder="Enter Name"
                   className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
-                  {...register(`participantNames.${index}.name`, {
+                  {...register(`name.${index}.name`, {
                     required: "Name is required",
+                    validate: {
+                      notEmpty: (value) =>
+                        value.trim().length > 0 || "Name cannot be empty",
+                    },
+                    setValueAs: (value) => value?.trim(),
                   })}
                 />
 
-                {errors.participantNames && (
+                {errors.name?.[index]?.name?.message && (
                   <p className="text-[rgb(var(--color-primary))] mt-1">
-                    {errors.participantNames.message}
+                    {errors.name[index].name.message}
                   </p>
                 )}
               </div>
@@ -243,106 +354,123 @@ const Registration = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="whatsappNumber"
-                className="flex items-center mb-2"
-              >
-                <Phone className="mr-2 text-[rgb(var(--color-accent))]" />
+              <label htmlFor="whatsapp_no" className="flex items-center mb-2">
+                <Phone className="mr-2 text-rose-300" />
                 Whatsapp Number
               </label>
               <input
                 type="tel"
-                id="whatsappNumber"
+                id="whatsapp_no"
                 placeholder="Enter Whatsapp Number"
                 className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
-                {...register("whatsappNumber", {
+                {...register("whatsapp_no", {
                   required: "Whatsapp number is required",
                   pattern: {
-                    value: /^\+?[\d\s-]+$/,
-                    message: "Invalid Whatsapp number",
+                    value: /^[0-9]{10}$/,
+                    message: "Whatsapp number must be exactly 10 digits",
                   },
                 })}
               />
-              {errors.whatsappNumber && (
+              {errors.whatsapp_no && (
                 <p className="text-[rgb(var(--color-primary))] mt-1">
-                  {errors.whatsappNumber.message}
+                  {errors.whatsapp_no.message}
                 </p>
               )}
             </div>
 
             <div>
-              <label
-                htmlFor="alternatePhone"
-                className="flex items-center mb-2"
-              >
+              <label htmlFor="alt_phone" className="flex items-center mb-2">
                 <Phone className="mr-2 text-[rgb(var(--color-accent))]" />
                 Alternate Phone Number
               </label>
               <input
                 type="tel"
-                id="alternatePhone"
+                id="alt_phone"
                 placeholder="Enter Alternate Phone Number"
                 className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
-                {...register("alternatePhone", {
-                  required: "Whatsapp number is required",
+                {...register("alt_phone", {
+                  required: "Alternate phone number is required",
                   pattern: {
-                    value: /^\+?[\d\s-]+$/,
-                    message: "Invalid Whatsapp number",
+                    value: /^[0-9]{10}$/,
+                    message: "Alternate phone number must be exactly 10 digits",
                   },
                 })}
               />
-              {errors.alternatePhone && (
+              {errors.alt_phone && (
                 <p className="text-[rgb(var(--color-primary))] mt-1">
-                  {errors.alternatePhone.message}
+                  {errors.alt_phone.message}
                 </p>
               )}
             </div>
 
             <div>
-              <label htmlFor="college" className="flex items-center mb-2">
+              <label htmlFor="collage_name" className="flex items-center mb-2">
                 <Building2 className="mr-2 text-[rgb(var(--color-purple))]" />
                 College/University
               </label>
               <input
                 type="text"
-                id="college"
+                id="collage_name"
                 placeholder="Enter College/University"
                 className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
-                {...register("college", {
+                {...register("collage_name", {
                   required: "College name is required",
+                  validate: {
+                    notEmpty: (value) =>
+                      value.trim().length > 0 || "Name cannot be empty",
+                  },
+                  setValueAs: (value) => value?.trim(),
                 })}
               />
-              {errors.college && (
+              {errors.collage_name && (
                 <p className="text-[rgb(var(--color-primary))] mt-1">
-                  {errors.college.message}
+                  {errors.collage_name.message}
                 </p>
               )}
             </div>
           </div>
         </Card>
-        {/* </motion.div> */}
 
-        {/* <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="neo-card bg-gradient-to-br from-[rgb(var(--color-accent))]/5 to-transparent"
-        > */}
         <Card className="hover:shadow-none">
           <h2 className="text-2xl mb-6">Payment Information</h2>
           <div className="space-y-6">
+            <div>
+              <label htmlFor="amount_paid" className="flex items-center mb-2">
+                <HandCoins className="mr-2 text-rose-300" />
+                Amount Paid
+              </label>
+              <input
+                type="number"
+                id="amount_paid"
+                min="1"
+                placeholder="Enter Amount Paid"
+                className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                {...register("amount_paid", {
+                  required: "Amount paid is required",
+                  min: {
+                    value: 1,
+                    message: "Amount must be greater than 0",
+                  },
+                })}
+              />
+              {errors.amount_paid && (
+                <p className="text-[rgb(var(--color-primary))] mt-1">
+                  {errors.amount_paid.message}
+                </p>
+              )}
+            </div>
+
             <FileUploadField
               control={control}
-              name="paySS"
+              name="transaction_screenshot"
               label="Upload Screenshot"
-              error={errors.paySS}
+              error={errors.transaction_screenshot}
               required={true}
-              // className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
             />
 
             <div>
               <label
-                htmlFor="upiTransectionId"
+                htmlFor="transaction_id"
                 className="flex items-center mb-2"
               >
                 <BadgeIndianRupee className="mr-2 text-[rgb(var(--color-purple))]" />
@@ -350,37 +478,33 @@ const Registration = () => {
               </label>
               <input
                 type="text"
-                id="upiTransectionId"
+                id="transaction_id"
                 min="1"
                 placeholder="Enter UPI Transaction Id"
                 className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
-                {...register("upiTransectionId", {
+                {...register("transaction_id", {
                   required: "UPI Transaction ID is required",
+                  validate: {
+                    notEmpty: (value) =>
+                      value.trim().length > 0 || "Name cannot be empty",
+                  },
+                  setValueAs: (value) => value?.trim(),
                 })}
               />
-              {errors.upiTransectionId && (
+              {errors.transaction_id && (
                 <p className="text-[rgb(var(--color-primary))] mt-1">
-                  {errors.upiTransectionId.message}
+                  {errors.transaction_id.message}
                 </p>
               )}
             </div>
           </div>
         </Card>
-        {/* </motion.div> */}
 
-        {/* <motion.button
-          type="submit"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="neo-button-primary w-full text-center text-xl py-4"
-        > */}
         <Button2 type="submit" className="w-full text-center text-xl py-4">
           Submit Registration
         </Button2>
-        {/* </motion.button> */}
       </form>
     </section>
-    // </motion.div>
   );
 };
 

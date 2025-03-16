@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo } from "react";
-// import { motion } from "framer-motion";
 import {
   ArrowRight,
   Calendar,
@@ -13,9 +12,8 @@ import { events } from "../data";
 import Card from "../components/Card";
 import Button from "../components/Button";
 import EventCard from "../components/EventCard";
-import ImageSlideshow2Line from "./ImageSlideshow2Line";
+import ImageSlideshow2Line from "../components/ImageSlideshow2Line";
 import Button2 from "../components/Button2";
-// import Button3 from "../components/Button3";
 
 const eventDate = new Date("2025-04-01").getTime();
 
@@ -74,11 +72,6 @@ const Home = () => {
   }, [calculateTimeLeft]);
 
   return (
-    // <motion.div
-    //   initial={{ opacity: 0 }}
-    //   animate={{ opacity: 1 }}
-    //   exit={{ opacity: 0 }}
-    // >
     <main>
       {/* Hero Section with Comic Pattern */}
       <section
@@ -90,36 +83,15 @@ const Home = () => {
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-md:pt-[20vh]">
-          {/* <motion.h1
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-5xl sm:text-6xl md:text-8xl font-black mb-4 text-custom-white dark:text-white "
-          > */}
           <div className="text-5xl sm:text-6xl md:text-8xl font-black mb-4 text-custom-white dark:text-white ">
             Mesmerizer'25
           </div>
 
-          {/* </motion.h1> */}
-          {/* <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-xl md:text-2xl mb-8 text-custom-white dark:text-white"
-          >
-            Where Culture Meets Creativity
-          </motion.p> */}
           <div className="text-xl md:text-2xl mb-8 text-custom-white dark:text-white">
             Where Culture Meets Creativity
           </div>
 
           {/* Countdown Timer */}
-          {/* <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-sm:w-[80vw] mx-auto mb-8 text-white"
-          > */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-sm:w-[80vw] mx-auto mb-8 text-white">
             <div className="flex justify-center items-center">
               <div className="glass-box w-24 h-24 flex flex-col justify-center items-center">
@@ -148,12 +120,6 @@ const Home = () => {
           </div>
           {/* </motion.div> */}
 
-          {/* <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="space-x-4 flex text-white justify-around max-sm:flex-col items-center max-sm:pr-4"
-          > */}
           <div className="space-x-4 flex text-white justify-around max-sm:flex-col items-center max-sm:pr-4">
             <Link to="/events" className="max-sm:ml-4">
               <Button className="">
@@ -166,7 +132,6 @@ const Home = () => {
               </Button>
             </Link>
           </div>
-          {/* </motion.div> */}
         </div>
       </section>
 
@@ -250,7 +215,7 @@ const Home = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {featuredEvents.map((event) => (
-              <EventCard event={event} />
+              <EventCard key={event.id} event={event} />
             ))}
           </div>
           <Link to="/events">
@@ -260,7 +225,7 @@ const Home = () => {
       </section>
 
       {/* Gallery Glimpse */}
-      <section className="relative py-20 pattern-circuit text-white  border-b-[10px] border-black">
+      <section className="relative py-20 pattern-circuit text-white  border-b-[10px] border-black transition-opacity duration-500 ease-in-out">
         {/* Background with overlay */}
         <div
           className="absolute inset-0 before:absolute before:inset-0 before:bg-black before:opacity-50 before:z-0"
@@ -347,7 +312,6 @@ const Home = () => {
         </div>
       </section>
     </main>
-    // </motion.div>
   );
 };
 

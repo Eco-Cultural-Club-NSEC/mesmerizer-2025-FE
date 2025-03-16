@@ -1,4 +1,3 @@
-// import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import {
   Calendar,
@@ -29,7 +28,7 @@ const EventDetails = () => {
     return (
       <div className="pt-24 pb-16 text-center">
         <h1 className="text-4xl font-bold mb-4">Event not found</h1>
-        <Link to="/events" className="neo-button inline-flex items-center">
+        <Link to="/events" className="inline-flex items-center">
           <ArrowLeft className="mr-2" /> Back to Events
         </Link>
       </div>
@@ -37,12 +36,6 @@ const EventDetails = () => {
   }
 
   return (
-    // <motion.div
-    //   initial={{ opacity: 0 }}
-    //   animate={{ opacity: 1 }}
-    //   exit={{ opacity: 0 }}
-    //   className="pt-24 pb-16"
-    // >
     <section className="pt-24 pb-16">
       <div
         className="h-screen w-full fixed top-0 left-0 bg-cover bg-center"
@@ -59,11 +52,6 @@ const EventDetails = () => {
 
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            {/* <motion.div
-              className="neo-card overflow-hidden"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            > */}
             <Card className="overflow-hidden hover:shadow-none">
               <img
                 src={event.image as string}
@@ -71,13 +59,8 @@ const EventDetails = () => {
                 className="w-full h-96 object-cover border border-white/50"
               />
             </Card>
-            {/* </motion.div> */}
 
-            <div className="mt-8 grid grid-cols-2 gap-4">
-              {/* <motion.div
-                className="neo-card bg-[rgb(var(--color-primary))]/10"
-                whileHover={{ y: -5 }}
-              > */}
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="transition-transform duration-200 hover:-translate-y-1">
                 <Card>
                   <div className="flex items-center">
@@ -89,12 +72,7 @@ const EventDetails = () => {
                   </div>
                 </Card>
               </div>
-              {/* </motion.div> */}
 
-              {/* <motion.div
-                className="neo-card bg-[rgb(var(--color-secondary))]/10"
-                whileHover={{ y: -5 }}
-              > */}
               <div className="transition-transform duration-200 hover:-translate-y-1">
                 <Card>
                   <div className="flex items-center">
@@ -106,12 +84,7 @@ const EventDetails = () => {
                   </div>
                 </Card>
               </div>
-              {/* </motion.div> */}
 
-              {/* <motion.div
-                className="neo-card bg-[rgb(var(--color-accent))]/10"
-                whileHover={{ y: -5 }}
-              > */}
               <div className="transition-transform duration-200 hover:-translate-y-1">
                 <Card>
                   <div className="flex items-center">
@@ -123,12 +96,7 @@ const EventDetails = () => {
                   </div>
                 </Card>
               </div>
-              {/* </motion.div> */}
 
-              {/* <motion.div
-                className="neo-card bg-[rgb(var(--color-purple))]/10"
-                whileHover={{ y: -5 }}
-              > */}
               <div className="transition-transform duration-200 hover:-translate-y-1">
                 <Card>
                   <div className="flex items-center">
@@ -143,12 +111,7 @@ const EventDetails = () => {
                   </div>
                 </Card>
               </div>
-              {/* </motion.div> */}
 
-              {/* <motion.div
-                className="neo-card bg-[rgb(var(--color-indigo))]/10"
-                whileHover={{ y: -5 }}
-              > */}
               <div className="transition-transform duration-200 hover:-translate-y-1">
                 <Card>
                   <div className="flex items-center">
@@ -161,10 +124,6 @@ const EventDetails = () => {
                 </Card>
               </div>
 
-              {/* <motion.div
-                className="neo-card bg-[rgb(var(--color-orange))]/10"
-                whileHover={{ y: -5 }}
-              > */}
               <div className="transition-transform duration-200 hover:-translate-y-1">
                 <Card>
                   <div className="flex items-center">
@@ -176,7 +135,6 @@ const EventDetails = () => {
                   </div>
                 </Card>
               </div>
-              {/* </motion.div> */}
             </div>
           </div>
 
@@ -217,19 +175,13 @@ const EventDetails = () => {
                   ))}
               </ul>
             </Card>
-            {/* <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleRegister}
-              className="neo-button w-full bg-[rgb(var(--color-primary))] text-white text-xl font-bold hover:bg-[rgb(var(--color-primary))]/90"
-            >*/}
-            <Button2 onClick={handleRegister} className="w-full">Register Now</Button2>
-            {/*</motion.button> */}
+            <Button2 onClick={handleRegister} className="w-full">
+              Register Now
+            </Button2>
           </div>
         </div>
       </div>
     </section>
-    // </motion.div>
   );
 };
 

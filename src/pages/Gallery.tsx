@@ -1,24 +1,8 @@
-// import { motion } from "framer-motion";
-import ImageSlideshow from "./ImageSlideshow";
-import ImageSlideshow2Line from "./ImageSlideshow2Line";
-
+import ImageSlideshow from "../components/ImageSlideshow";
+import ImageSlideshow2Line from "../components/ImageSlideshow2Line";
 const Gallery = () => {
   return (
-    // <motion.div
-    //   initial={{ opacity: 0 }}
-    //   animate={{ opacity: 1 }}
-    //   exit={{ opacity: 0 }}
-    //   className="pt-24 pb-16 pattern-grid"
-    // >
     <section className="pt-24 pb-16 max-sm:pb-8 pattern-grid text-white">
-      {/* <div
-        className="absolute inset-0 before:absolute before:inset-0 before:bg-black before:opacity-30 before:z-0"
-        style={{
-          backgroundImage: "url('/pics/Gallery.webp')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      ></div> */}
       <div
         className="h-screen w-full fixed left-0 bg-cover bg-center inset-0 before:fixed before:inset-0 before:bg-black before:opacity-50 before:z-0"
         style={{
@@ -35,7 +19,6 @@ const Gallery = () => {
         <ImageSlideshow2Line className="mt-32 max-sm:mt-12" />
       </div>
     </section>
-    // </motion.div>
   );
 };
 

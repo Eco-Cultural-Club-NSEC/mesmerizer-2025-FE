@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { Event } from "../types";
 import Card from "./Card";
-// import { motion } from "framer-motion";
-// import Button from "./Button";
 import { Calendar, MapPin, Users } from "lucide-react";
 import Button2 from "./Button2";
 
@@ -14,16 +12,8 @@ interface EventCardProp {
 const EventCard = ({ cardClassName, event }: EventCardProp) => {
   return (
     <Card className={cardClassName}>
-      {/* <motion.div
-        key={event.id}
-        layout
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        className="group"
-      > */}
       <div className="group">
-        <div className="relative mb-4 overflow-hidden border border-white/50 dark:border-white">
+        <div className="relative mb-4 overflow-hidden border border-white/50">
           <img
             src={event.image as string}
             alt={event.title}
@@ -59,7 +49,6 @@ const EventCard = ({ cardClassName, event }: EventCardProp) => {
           <Button2 className="w-full">View Details</Button2>
         </Link>
       </div>
-      {/* </motion.div> */}
     </Card>
   );
 };

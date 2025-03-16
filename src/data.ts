@@ -5,7 +5,7 @@ export const events: Event[] = [
   {
     id: '1',
     title: 'Solo Singing',
-    date: 'day 1',
+    date: '03-04-2025',
     time: 'first half',
     image: 'https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741611087/mesmerizer/gallery_pic/gxewpsmbf6u0ewaqkjfg.jpg',
     location: 'New Seminar Hall',
@@ -37,7 +37,7 @@ export const events: Event[] = [
   {
     id: '2',
     title: 'Face Painting',
-    date: 'day 1',
+    date: '03-04-2025',
     time: 'first half',
     image: 'https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741610358/mesmerizer/event_pic/kaqseb8lgrcgymfajbh8.jpg',
     location: 'Class Room',
@@ -71,7 +71,7 @@ export const events: Event[] = [
   {
     id: '3',
     title: 'Eastern Dance Solo',
-    date: 'day 1',
+    date: '03-04-2025',
     time: 'first half',
     image: 'https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741608271/mesmerizer/event_pic/feiijqiptidiuozz9e1u.jpg',
     location: 'Boys Common Room',
@@ -104,7 +104,7 @@ export const events: Event[] = [
   {
     id: '4',
     title: 'Beatboxing Battle',
-    date: 'day 1',
+    date: '03-04-2025',
     time: 'second half',
     image: 'https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741608229/mesmerizer/event_pic/aotgc0if6gaqam3htysf.jpg',
     location: 'Boys Common Room',
@@ -141,7 +141,7 @@ export const events: Event[] = [
   {
     id: '5',
     title: 'Debate',
-    date: 'day 1',
+    date: '03-04-2025',
     time: 'second half',
     image: 'https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741608223/mesmerizer/event_pic/hzb5kxwqchrcn3xgwtde.jpg',
     location: 'Language Lab',
@@ -180,7 +180,7 @@ export const events: Event[] = [
   {
     id: '6',
     title: 'The Talent Show',
-    date: 'day 1',
+    date: '03-04-2025',
     time: 'second half',
     image: 'https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741608267/mesmerizer/event_pic/vonhcvgvrzhywhte7lma.jpg',
     location: 'New Seminar Hall',
@@ -218,7 +218,7 @@ export const events: Event[] = [
   {
     id: '7',
     title: 'Short Film',
-    date: 'day 1',
+    date: '03-04-2025',
     time: 'second half',
     image: 'https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741608225/mesmerizer/event_pic/ep95alcvvarrfbta8fkm.jpg',
     location: 'APC Hall',
@@ -253,7 +253,7 @@ export const events: Event[] = [
   {
     id: '8',
     title: 'Creative Group Dance',
-    date: 'day 2',
+    date: '04-04-2025',
     time: 'first half',
     image: 'https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741608225/mesmerizer/event_pic/zoyfdmousiyj4uoqjqst.jpg',
     location: 'Boys Common Room',
@@ -288,7 +288,7 @@ export const events: Event[] = [
   {
     id: '9',
     title: 'Quiz',
-    date: 'day 2',
+    date: '04-04-2025',
     time: 'first half',
     image: 'https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741608273/mesmerizer/event_pic/zwmhou4c3mbfhfzdwshg.jpg',
     location: 'Language Lab',
@@ -319,7 +319,7 @@ export const events: Event[] = [
   {
     id: '10',
     title: 'Street Dance Battle',
-    date: 'day 2',
+    date: '04-04-2025',
     time: 'second half',
     image: 'https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741610358/mesmerizer/event_pic/om7ckomgmxrtyqnvvxfe.jpg',
     location: 'Boys Common Room',
@@ -352,7 +352,7 @@ export const events: Event[] = [
   {
     id: '11',
     title: 'Fashion Show',
-    date: 'day 2',
+    date: '04-04-2025',
     time: 'second half',
     image: 'https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741610352/mesmerizer/event_pic/isgxizmwavktzeq1bx1q.jpg',
     location: 'Boys Common Room',

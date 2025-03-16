@@ -1,9 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { X } from "lucide-react";
 import { images as imgs } from "../images";
-import Card from "../components/Card";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
+import Card from "./Card";
 
 const images = imgs.map((url) => `${url}?auto=format&fit=crop&w=800&q=80`);
 
@@ -55,9 +53,8 @@ function ImageSlideshow2({ className }: { className?: string }) {
     // Create 4 sets of images to ensure smooth transition
     const sets = [...images, ...images, ...images, ...images];
     return sets.map((img, i) => (
-      <Card>
+      <Card key={`${img}-${i}`}>
         <div
-          key={`${img}-${i}`}
           className="w-[300px] h-[300px] flex-shrink-0 cursor-pointer overflow-hidden rounded-lg"
           onClick={() => setSelectedImage(img)}
         >
@@ -119,11 +116,10 @@ function ImageSlideshow2({ className }: { className?: string }) {
           >
             <X size={32} />
           </button>
-          <LazyLoadImage
+          <img
             src={selectedImage}
             alt="Selected landscape"
             className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg"
-            effect="blur"
           />
         </div>
       )}

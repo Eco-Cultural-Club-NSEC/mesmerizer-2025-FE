@@ -1,4 +1,4 @@
-import { useState, useRef, ChangeEvent, DragEvent } from "react";
+import { useState, useRef, ChangeEvent, DragEvent, useEffect } from "react";
 import { ImagePlus, Upload, X, File as FileIcon } from "lucide-react";
 import {
   Controller,
@@ -26,8 +26,23 @@ const FileUploadField = <T extends FieldValues>({
   const [file, setFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  // const [showLargePreview, setShowLargePreview] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  // Add reset method
+  const reset = () => {
+    setFile(null);
+    setPreviewUrl(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
+  // Expose reset method to parent
+  useEffect(() => {
+    if (fileInputRef.current) {
+      (fileInputRef.current as any).reset = reset;
+    }
+  }, []);
 
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -68,6 +83,13 @@ const FileUploadField = <T extends FieldValues>({
   };
 
   const handleFile = (file: File, onChange: (file: File | null) => void) => {
+    const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+    if (file.size > maxSize) {
+      alert("File size must be less than 2MB");
+      onChange(null); // Clear the file in form validation
+      return;
+    }
+
     setFile(file);
     onChange(file); // Pass the file to React Hook Form
 
@@ -85,7 +107,6 @@ const FileUploadField = <T extends FieldValues>({
   const handleRemoveFile = (onChange: (file: File | null) => void) => {
     setFile(null);
     setPreviewUrl(null);
-    // setShowLargePreview(false);
     onChange(null); // Clear the value in React Hook Form
 
     if (fileInputRef.current) {
@@ -97,32 +118,21 @@ const FileUploadField = <T extends FieldValues>({
     <Controller
       control={control}
       name={name}
-      rules={{ required: required ? "Please upload a valid image" : false }}
+      rules={{
+        required: required ? "Please upload a valid image" : false,
+        validate: (value) => {
+          if (value && value.size > 2 * 1024 * 1024) {
+            return "File size must be less than 2MB";
+          }
+          return true;
+        },
+      }}
       render={({ field: { onChange } }) => (
         <div className="mb-4">
           <label htmlFor={name} className="flex items-center mb-2">
             <ImagePlus className="mr-2 text-[rgb(var(--color-accent))]" />
             {label || "Upload Screenshot"}
           </label>
-
-          {/* {previewUrl && showLargePreview && (
-            <div className="mb-4">
-              <div className="relative aspect-video w-full rounded-lg overflow-hidden bg-white mb-2">
-                <img
-                  src={previewUrl}
-                  alt="Large Preview"
-                  className="w-full h-full object-contain"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowLargePreview(false)}
-                  className="absolute top-2 right-2 p-1.5 rounded-full bg-gray-900/50 hover:bg-gray-900/70 transition-colors"
-                >
-                  <X className="w-4 h-4 text-white" />
-                </button>
-              </div>
-            </div>
-          )} */}
 
           <div
             className={`relative border-2 rounded-lg transition-all duration-200 ease-in-out ${
@@ -153,13 +163,6 @@ const FileUploadField = <T extends FieldValues>({
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    {/* <button
-                      type="button"
-                      onClick={() => setShowLargePreview(true)}
-                      className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center"
-                    >
-                      <Maximize2 className="w-6 h-6 text-white" />
-                    </button> */}
                   </div>
                 ) : (
                   <div className="w-16 h-16 rounded-lg bg-[rgb(var(--color-accent))]/10 flex items-center justify-center flex-shrink-0">
