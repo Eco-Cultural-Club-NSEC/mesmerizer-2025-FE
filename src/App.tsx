@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Toaster } from "sonner";
 // import { AnimatePresence } from "framer-motion";
 // import Navbar from "./components/Navbar";
 // import Home from "./pages/Home";
@@ -48,6 +49,7 @@ function App() {
           {/* </AnimatePresence> */}
           <Footer />
         </div>
+        <Toaster position="bottom-right" richColors />
       </Suspense>
     </Router>
   );
