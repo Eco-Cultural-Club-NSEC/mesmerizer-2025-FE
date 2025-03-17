@@ -15,24 +15,32 @@ if (typeof window !== "undefined") {
       https://analytics.vercel.app
       https://va.vercel-scripts.com
       https://www.googletagmanager.com 
-      https://www.google-analytics.com;
+      https://www.google-analytics.com
+      https://www.clarity.ms
+      https://h.clarity.ms;
     style-src 'self' 'unsafe-inline';
     img-src 'self' data: https://*.cloudinary.com blob: 
       https://res.cloudinary.com
       https://www.google-analytics.com
-      https://www.googletagmanager.com;
+      https://www.googletagmanager.com
+      https://www.clarity.ms
+      https://h.clarity.ms;
     font-src 'self';
     connect-src 'self' 
-      https://api.mesmerizernsec.club 
+      ${import.meta.env.VITE_VERCEL_ENV_BACKEND_URL}
       https://*.cloudinary.com 
       https://api.cloudinary.com 
       https://analytics.vercel.app 
       https://va.vercel-scripts.com
       https://www.google-analytics.com
-      https://www.googletagmanager.com;
+      https://www.googletagmanager.com
+      https://www.clarity.ms
+      https://h.clarity.ms;
     frame-src 'self'
       https://www.google-analytics.com
-      https://www.googletagmanager.com;
+      https://www.googletagmanager.com
+      https://www.clarity.ms
+      https://h.clarity.ms;
     form-action 'self';
     object-src 'none';
     media-src 'self' https://*.cloudinary.com;

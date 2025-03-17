@@ -49,7 +49,7 @@ export const deleteFromCloudinary = async (publicId: string): Promise<void> => {
         body: JSON.stringify({
           public_id: publicId,
           signature: signature,
-          api_key: import.meta.env.VITE_VERCEL_ENV_CLOUDINARY_API_KEY,
+          api_key: import.meta.env.VITE_VERCEL_ENV_CLOUDINARY_APIK,
           timestamp: timestamp,
         }),
       }
@@ -74,7 +74,7 @@ const generateSignature = async (
   timestamp: number
 ): Promise<string> => {
   const str = `public_id=${publicId}&timestamp=${timestamp}${
-    import.meta.env.VITE_VERCEL_ENV_CLOUDINARY_API_SECRET
+    import.meta.env.VITE_VERCEL_ENV_CLOUDINARY_APIS
   }`;
 
   // Using SubtleCrypto for SHA-256 hashing (more secure than SHA-1)

@@ -54,7 +54,9 @@ const Navbar = () => {
           <div className="md:hidden flex items-center relative z-50">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 border-0 bg-transparent text-white "
+              className="p-2 border-0 bg-transparent text-white"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

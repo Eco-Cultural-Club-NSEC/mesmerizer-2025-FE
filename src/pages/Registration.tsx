@@ -46,6 +46,23 @@ interface RegistrationFormSend {
   transaction_screenshot: string;
 }
 
+// interface RegistrationFormSend {
+//   eventTitle: string;
+//   eventCode: string;
+//   eventDay: string;
+//   eventTime: string;
+//   eventLocation: string;
+//   teamSize: number;
+//   teamLeadName: { name: string };
+//   email: string;
+//   whatsappNumber: string;
+//   alternatePhone: string;
+//   college: string;
+//   upiTransectionId: string;
+//   paySS: string;
+//   participantNames: { name: string }[];
+// }
+
 interface CustomFileInput extends HTMLInputElement {
   reset: () => void;
 }
@@ -149,10 +166,28 @@ const Registration = () => {
         transaction_id: data.transaction_id,
         transaction_screenshot: uploadedImageData.secure_url,
       };
-      console.log(submissionData);
+      // const submissionData: RegistrationFormSend = {
+      //   eventTitle: data.event,
+      //   eventCode: event.code,
+      //   eventDay: event.date,
+      //   eventTime: event.time,
+      //   eventLocation: event.location,
+      //   teamSize: data.name.length,
+      //   teamLeadName: data.name[0],
+      //   email: data.email,
+      //   whatsappNumber: data.whatsapp_no,
+      //   alternatePhone: data.alt_phone,
+      //   college: data.collage_name,
+      //   upiTransectionId: data.transaction_id,
+      //   paySS: uploadedImageData.secure_url,
+      //   participantNames: data.name,
+      // };
+      // console.log("Submitted Data: ", submissionData);
 
       const response = await fetch(
-        `https://api.mesmerizernsec.club/api/v1/participants/register`,
+        `${
+          import.meta.env.VITE_VERCEL_ENV_BACKEND_URL
+        }/api/v1/participant/register`,
         {
           method: "POST",
           headers: {
@@ -221,97 +256,221 @@ const Registration = () => {
           itself is a victory
         </p>
       </div>
-
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="space-y-8 relative z-10"
-      >
+      <div className="relative z-10">
         <Card className="hover:shadow-none">
-          <h2 className="text-2xl mb-6">Event Registration</h2>
-          <div className="space-y-6">
-            <div>
-              <label className="flex items-center mb-4">
-                <Trophy className="mr-2 text-[rgb(var(--color-secondary))]" />
-                Events
-              </label>
-              <div className="relative">
-                <select
-                  {...register("event", {
-                    required: "Please select an event",
-                  })}
-                  value={event?.title}
-                  onChange={(v) => {
-                    setEvent(
-                      events.find((e) => e.title === v.target.value) ||
-                        events[0]
-                    );
-                  }}
-                  className="w-full p-4 cursor-pointer bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
-                >
-                  <option
-                    value=""
-                    disabled
-                    hidden
-                    className="text-black bg-white"
-                  >
-                    Select an event
-                  </option>
-                  {events.map((event, index) => (
-                    <option
-                      key={index}
-                      value={event.title}
-                      className="text-black bg-white"
-                    >
-                      {event.title}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              {errors.event && (
-                <p className="text-[rgb(var(--color-primary))] mt-2">
-                  {errors.event.message}
-                </p>
-              )}
+          <div className="flex flex-col sm:flex-row items-center justify-around">
+            <div className="flex flex-col items-center justify-center">
+              <img
+                src="/pics/qr-code.webp"
+                alt="QR Code"
+                className="w-[200px] object-cover rounded-lg"
+              />
+              <p className="mt-2">Scan the QR code to pay</p>
+              <p>the registration fee</p>
+            </div>
+
+            <div className="mt-6 sm:mt-0 flex flex-col items-center justify-center">
+              <p>upi id: mesmerizer2025@ibl</p>
+              <p>name: Mesmerizer 2025</p>
+              <p>Contact no.: 9876543210</p>
             </div>
           </div>
         </Card>
 
-        <Card className="hover:shadow-none">
-          <h2 className="text-2xl mb-6">Team Information</h2>
-          <div className="space-y-6">
-            {fields.map((field, index) => (
-              <div key={field.id}>
-                <div className="flex justify-between">
-                  <label
-                    htmlFor={`participant${index}`}
-                    className="flex items-center mb-2"
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 mt-8">
+          <Card className="hover:shadow-none">
+            <h2 className="text-2xl mb-6">Event Registration</h2>
+            <div className="space-y-6">
+              <div>
+                <label className="flex items-center mb-4">
+                  <Trophy className="mr-2 text-[rgb(var(--color-secondary))]" />
+                  Events
+                </label>
+                <div className="relative">
+                  <select
+                    {...register("event", {
+                      required: "Please select an event",
+                    })}
+                    value={event?.title}
+                    onChange={(v) => {
+                      setEvent(
+                        events.find((e) => e.title === v.target.value) ||
+                          events[0]
+                      );
+                    }}
+                    className="w-full p-4 cursor-pointer bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
                   >
-                    <User className="mr-2 text-[rgb(var(--color-primary))]" />
-                    Participant Name {index + 1}
-                  </label>
+                    <option
+                      value=""
+                      disabled
+                      hidden
+                      className="text-black bg-white"
+                    >
+                      Select an event
+                    </option>
+                    {events.map((event, index) => (
+                      <option
+                        key={index}
+                        value={event.title}
+                        className="text-black bg-white"
+                      >
+                        {event.title}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                {errors.event && (
+                  <p className="text-[rgb(var(--color-primary))] mt-2">
+                    {errors.event.message}
+                  </p>
+                )}
+              </div>
+            </div>
+          </Card>
 
-                  <div className="flex items-center gap-5">
-                    <div
-                      className="pt-1 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-125 active:scale-75"
-                      onClick={addParticipant}
+          <Card className="hover:shadow-none">
+            <h2 className="text-2xl mb-6">Team Information</h2>
+            <div className="space-y-6">
+              {fields.map((field, index) => (
+                <div key={field.id}>
+                  <div className="flex justify-between">
+                    <label
+                      htmlFor={`participant${index}`}
+                      className="flex items-center mb-2"
                     >
-                      <UserPlus className="text-[rgb(var(--color-primary))]" />
-                    </div>
-                    <div
-                      className="pt-1 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-125 active:scale-75"
-                      onClick={removeParticipant}
-                    >
-                      <UserMinus className="text-[rgb(var(--color-primary))]" />
+                      <User className="mr-2 text-[rgb(var(--color-primary))]" />
+                      Participant Name {index + 1}
+                    </label>
+
+                    <div className="flex items-center gap-5">
+                      <div
+                        className="pt-1 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-125 active:scale-75"
+                        onClick={addParticipant}
+                      >
+                        <UserPlus className="text-[rgb(var(--color-primary))]" />
+                      </div>
+                      <div
+                        className="pt-1 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-125 active:scale-75"
+                        onClick={removeParticipant}
+                      >
+                        <UserMinus className="text-[rgb(var(--color-primary))]" />
+                      </div>
                     </div>
                   </div>
+                  <input
+                    type="text"
+                    id={`participant${index}`}
+                    placeholder="Enter Name"
+                    className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
+                    {...register(`name.${index}.name`, {
+                      required: "Name is required",
+                      validate: {
+                        notEmpty: (value) =>
+                          value.trim().length > 0 || "Name cannot be empty",
+                      },
+                      setValueAs: (value) => value?.trim(),
+                    })}
+                  />
+
+                  {errors.name?.[index]?.name?.message && (
+                    <p className="text-[rgb(var(--color-primary))] mt-1">
+                      {errors.name[index].name.message}
+                    </p>
+                  )}
                 </div>
+              ))}
+
+              <div>
+                <label htmlFor="email" className="flex items-center mb-2">
+                  <Mail className="mr-2 text-[rgb(var(--color-secondary))]" />
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Enter Email"
+                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: "Invalid email address",
+                    },
+                  })}
+                />
+                {errors.email && (
+                  <p className="text-[rgb(var(--color-primary))] mt-1">
+                    {errors.email.message}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="whatsapp_no" className="flex items-center mb-2">
+                  <Phone className="mr-2 text-rose-300" />
+                  Whatsapp Number
+                </label>
+                <input
+                  type="tel"
+                  id="whatsapp_no"
+                  placeholder="Enter Whatsapp Number"
+                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
+                  {...register("whatsapp_no", {
+                    required: "Whatsapp number is required",
+                    pattern: {
+                      value: /^[0-9]{10}$/,
+                      message: "Whatsapp number must be exactly 10 digits",
+                    },
+                  })}
+                />
+                {errors.whatsapp_no && (
+                  <p className="text-[rgb(var(--color-primary))] mt-1">
+                    {errors.whatsapp_no.message}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="alt_phone" className="flex items-center mb-2">
+                  <Phone className="mr-2 text-[rgb(var(--color-accent))]" />
+                  Alternate Phone Number
+                </label>
+                <input
+                  type="tel"
+                  id="alt_phone"
+                  placeholder="Enter Alternate Phone Number"
+                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
+                  {...register("alt_phone", {
+                    required: "Alternate phone number is required",
+                    pattern: {
+                      value: /^[0-9]{10}$/,
+                      message:
+                        "Alternate phone number must be exactly 10 digits",
+                    },
+                  })}
+                />
+                {errors.alt_phone && (
+                  <p className="text-[rgb(var(--color-primary))] mt-1">
+                    {errors.alt_phone.message}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label
+                  htmlFor="collage_name"
+                  className="flex items-center mb-2"
+                >
+                  <Building2 className="mr-2 text-[rgb(var(--color-purple))]" />
+                  College/University
+                </label>
                 <input
                   type="text"
-                  id={`participant${index}`}
-                  placeholder="Enter Name"
+                  id="collage_name"
+                  placeholder="Enter College/University"
                   className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
-                  {...register(`name.${index}.name`, {
-                    required: "Name is required",
+                  {...register("collage_name", {
+                    required: "College name is required",
                     validate: {
                       notEmpty: (value) =>
                         value.trim().length > 0 || "Name cannot be empty",
@@ -319,191 +478,89 @@ const Registration = () => {
                     setValueAs: (value) => value?.trim(),
                   })}
                 />
-
-                {errors.name?.[index]?.name?.message && (
+                {errors.collage_name && (
                   <p className="text-[rgb(var(--color-primary))] mt-1">
-                    {errors.name[index].name.message}
+                    {errors.collage_name.message}
                   </p>
                 )}
               </div>
-            ))}
-
-            <div>
-              <label htmlFor="email" className="flex items-center mb-2">
-                <Mail className="mr-2 text-[rgb(var(--color-secondary))]" />
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                placeholder="Enter Email"
-                className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
-                {...register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Invalid email address",
-                  },
-                })}
-              />
-              {errors.email && (
-                <p className="text-[rgb(var(--color-primary))] mt-1">
-                  {errors.email.message}
-                </p>
-              )}
             </div>
+          </Card>
 
-            <div>
-              <label htmlFor="whatsapp_no" className="flex items-center mb-2">
-                <Phone className="mr-2 text-rose-300" />
-                Whatsapp Number
-              </label>
-              <input
-                type="tel"
-                id="whatsapp_no"
-                placeholder="Enter Whatsapp Number"
-                className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
-                {...register("whatsapp_no", {
-                  required: "Whatsapp number is required",
-                  pattern: {
-                    value: /^[0-9]{10}$/,
-                    message: "Whatsapp number must be exactly 10 digits",
-                  },
-                })}
+          <Card className="hover:shadow-none">
+            <h2 className="text-2xl mb-6">Payment Information</h2>
+            <div className="space-y-6">
+              <div>
+                <label htmlFor="amount_paid" className="flex items-center mb-2">
+                  <HandCoins className="mr-2 text-rose-300" />
+                  Amount Paid
+                </label>
+                <input
+                  type="number"
+                  id="amount_paid"
+                  min="1"
+                  placeholder="Enter Amount Paid"
+                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  {...register("amount_paid", {
+                    required: "Amount paid is required",
+                    min: {
+                      value: 1,
+                      message: "Amount must be greater than 0",
+                    },
+                  })}
+                />
+                {errors.amount_paid && (
+                  <p className="text-[rgb(var(--color-primary))] mt-1">
+                    {errors.amount_paid.message}
+                  </p>
+                )}
+              </div>
+
+              <FileUploadField
+                control={control}
+                name="transaction_screenshot"
+                label="Upload Screenshot"
+                error={errors.transaction_screenshot}
+                required={true}
               />
-              {errors.whatsapp_no && (
-                <p className="text-[rgb(var(--color-primary))] mt-1">
-                  {errors.whatsapp_no.message}
-                </p>
-              )}
+
+              <div>
+                <label
+                  htmlFor="transaction_id"
+                  className="flex items-center mb-2"
+                >
+                  <BadgeIndianRupee className="mr-2 text-[rgb(var(--color-purple))]" />
+                  UPI Transaction Id
+                </label>
+                <input
+                  type="text"
+                  id="transaction_id"
+                  min="1"
+                  placeholder="Enter UPI Transaction Id"
+                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
+                  {...register("transaction_id", {
+                    required: "UPI Transaction ID is required",
+                    validate: {
+                      notEmpty: (value) =>
+                        value.trim().length > 0 || "Name cannot be empty",
+                    },
+                    setValueAs: (value) => value?.trim(),
+                  })}
+                />
+                {errors.transaction_id && (
+                  <p className="text-[rgb(var(--color-primary))] mt-1">
+                    {errors.transaction_id.message}
+                  </p>
+                )}
+              </div>
             </div>
+          </Card>
 
-            <div>
-              <label htmlFor="alt_phone" className="flex items-center mb-2">
-                <Phone className="mr-2 text-[rgb(var(--color-accent))]" />
-                Alternate Phone Number
-              </label>
-              <input
-                type="tel"
-                id="alt_phone"
-                placeholder="Enter Alternate Phone Number"
-                className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
-                {...register("alt_phone", {
-                  required: "Alternate phone number is required",
-                  pattern: {
-                    value: /^[0-9]{10}$/,
-                    message: "Alternate phone number must be exactly 10 digits",
-                  },
-                })}
-              />
-              {errors.alt_phone && (
-                <p className="text-[rgb(var(--color-primary))] mt-1">
-                  {errors.alt_phone.message}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label htmlFor="collage_name" className="flex items-center mb-2">
-                <Building2 className="mr-2 text-[rgb(var(--color-purple))]" />
-                College/University
-              </label>
-              <input
-                type="text"
-                id="collage_name"
-                placeholder="Enter College/University"
-                className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
-                {...register("collage_name", {
-                  required: "College name is required",
-                  validate: {
-                    notEmpty: (value) =>
-                      value.trim().length > 0 || "Name cannot be empty",
-                  },
-                  setValueAs: (value) => value?.trim(),
-                })}
-              />
-              {errors.collage_name && (
-                <p className="text-[rgb(var(--color-primary))] mt-1">
-                  {errors.collage_name.message}
-                </p>
-              )}
-            </div>
-          </div>
-        </Card>
-
-        <Card className="hover:shadow-none">
-          <h2 className="text-2xl mb-6">Payment Information</h2>
-          <div className="space-y-6">
-            <div>
-              <label htmlFor="amount_paid" className="flex items-center mb-2">
-                <HandCoins className="mr-2 text-rose-300" />
-                Amount Paid
-              </label>
-              <input
-                type="number"
-                id="amount_paid"
-                min="1"
-                placeholder="Enter Amount Paid"
-                className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                {...register("amount_paid", {
-                  required: "Amount paid is required",
-                  min: {
-                    value: 1,
-                    message: "Amount must be greater than 0",
-                  },
-                })}
-              />
-              {errors.amount_paid && (
-                <p className="text-[rgb(var(--color-primary))] mt-1">
-                  {errors.amount_paid.message}
-                </p>
-              )}
-            </div>
-
-            <FileUploadField
-              control={control}
-              name="transaction_screenshot"
-              label="Upload Screenshot"
-              error={errors.transaction_screenshot}
-              required={true}
-            />
-
-            <div>
-              <label
-                htmlFor="transaction_id"
-                className="flex items-center mb-2"
-              >
-                <BadgeIndianRupee className="mr-2 text-[rgb(var(--color-purple))]" />
-                UPI Transaction Id
-              </label>
-              <input
-                type="text"
-                id="transaction_id"
-                min="1"
-                placeholder="Enter UPI Transaction Id"
-                className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
-                {...register("transaction_id", {
-                  required: "UPI Transaction ID is required",
-                  validate: {
-                    notEmpty: (value) =>
-                      value.trim().length > 0 || "Name cannot be empty",
-                  },
-                  setValueAs: (value) => value?.trim(),
-                })}
-              />
-              {errors.transaction_id && (
-                <p className="text-[rgb(var(--color-primary))] mt-1">
-                  {errors.transaction_id.message}
-                </p>
-              )}
-            </div>
-          </div>
-        </Card>
-
-        <Button2 type="submit" className="w-full text-center text-xl py-4">
-          Submit Registration
-        </Button2>
-      </form>
+          <Button2 type="submit" className="w-full text-center text-xl py-4">
+            Submit Registration
+          </Button2>
+        </form>
+      </div>
     </section>
   );
 };

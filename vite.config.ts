@@ -8,7 +8,14 @@ export default defineConfig({
     react(),
     compression({
       algorithm: "gzip",
-      exclude: [/\.(br)$/, /\.(gz)$/],
+      exclude: [
+        /\.(br)$/,
+        /\.(gz)$/,
+        /\.(jpg|jpeg|png|gif|webp|avif|ico)$/,
+        /\.(mp4|webm|ogg)$/,
+        /\.(woff|woff2|eot|ttf|otf)$/,
+      ],
+      threshold: 1024, // Only compress files larger than 1KB
     }),
   ],
   build: {
