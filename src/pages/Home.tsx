@@ -190,7 +190,7 @@ const Home = () => {
             </div>
             <Card>
               <img
-                src="https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741611111/mesmerizer/gallery_pic/lvvxktnnoh10znoqflza.jpg"
+                src="https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223578/mesmerizer/webp/ykfj4o2u0v61nnndo50h.webp"
                 alt=""
               />
             </Card>

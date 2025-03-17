@@ -10,21 +10,25 @@ if (typeof window !== "undefined") {
   const meta = document.createElement("meta");
   meta.httpEquiv = "Content-Security-Policy";
   meta.content = `
-    default-src 'self';
+    default-src 'self' https://*.clarity.ms https://c.bing.com;
     script-src 'self' 'unsafe-inline' 
       https://analytics.vercel.app
       https://va.vercel-scripts.com
       https://www.googletagmanager.com 
       https://www.google-analytics.com
       https://www.clarity.ms
-      https://h.clarity.ms;
+      https://clarity.microsoft.com
+      https://*.clarity.ms
+      https://c.bing.com;
     style-src 'self' 'unsafe-inline';
     img-src 'self' data: https://*.cloudinary.com blob: 
       https://res.cloudinary.com
       https://www.google-analytics.com
       https://www.googletagmanager.com
       https://www.clarity.ms
-      https://h.clarity.ms;
+      https://clarity.microsoft.com
+      https://*.clarity.ms
+      https://c.bing.com;
     font-src 'self';
     connect-src 'self' 
       ${import.meta.env.VITE_VERCEL_ENV_BACKEND_URL}
@@ -35,12 +39,16 @@ if (typeof window !== "undefined") {
       https://www.google-analytics.com
       https://www.googletagmanager.com
       https://www.clarity.ms
-      https://h.clarity.ms;
+      https://clarity.microsoft.com
+      https://*.clarity.ms
+      https://c.bing.com;
     frame-src 'self'
       https://www.google-analytics.com
       https://www.googletagmanager.com
       https://www.clarity.ms
-      https://h.clarity.ms;
+      https://clarity.microsoft.com
+      https://*.clarity.ms
+      https://c.bing.com;
     form-action 'self';
     object-src 'none';
     media-src 'self' https://*.cloudinary.com;

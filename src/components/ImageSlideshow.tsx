@@ -3,21 +3,20 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Card from "./Card";
 
 const images = [
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741610352/mesmerizer/event_pic/isgxizmwavktzeq1bx1q.jpg",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741611087/mesmerizer/gallery_pic/gxewpsmbf6u0ewaqkjfg.jpg",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741610358/mesmerizer/event_pic/kaqseb8lgrcgymfajbh8.jpg",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741611378/mesmerizer/gallery_pic/qqde6nphkzzhyephvig3.jpg",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741608271/mesmerizer/event_pic/feiijqiptidiuozz9e1u.jpg",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741608229/mesmerizer/event_pic/aotgc0if6gaqam3htysf.jpg",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741611111/mesmerizer/gallery_pic/lvvxktnnoh10znoqflza.jpg",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741608223/mesmerizer/event_pic/hzb5kxwqchrcn3xgwtde.jpg",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741608267/mesmerizer/event_pic/vonhcvgvrzhywhte7lma.jpg",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741611101/mesmerizer/gallery_pic/qsna00adrc65o8yzwpn0.jpg",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741608225/mesmerizer/event_pic/ep95alcvvarrfbta8fkm.jpg",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741608225/mesmerizer/event_pic/zoyfdmousiyj4uoqjqst.jpg",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741611080/mesmerizer/gallery_pic/w3pixehdn53hvuuqedxw.jpg",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741608273/mesmerizer/event_pic/zwmhou4c3mbfhfzdwshg.jpg",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1741610358/mesmerizer/event_pic/om7ckomgmxrtyqnvvxfe.jpg",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223453/mesmerizer/webp/s94uldwrsyuo5rwswtrl.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223596/mesmerizer/webp/g28zc4efs3wpbtd8ttrh.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223447/mesmerizer/webp/zs1kiw5u7jnreereeegb.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223457/mesmerizer/webp/lxquatqshwoensb7a8bu.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223478/mesmerizer/webp/vkowgc8v0urqwdi62fgg.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223578/mesmerizer/webp/ykfj4o2u0v61nnndo50h.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223467/mesmerizer/webp/fjei8pxernmzqxt9v1j0.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223491/mesmerizer/webp/wa4xmqaoz1eqtuwwduzs.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223506/mesmerizer/webp/lhcri3simimkrk8rbbcj.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223472/mesmerizer/webp/clevl8ezmz5ukwlijldf.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223462/mesmerizer/webp/r6gxkhwt7vvunq25zp3e.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223560/mesmerizer/webp/gjsejcjfgx8hahdpt7nt.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223495/mesmerizer/webp/ots4a8vk4ahqr7fn1sdq.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223488/mesmerizer/webp/s7cm7zggpbzf02nsx72b.webp",
 ];
 
 const ImageSlideshow = ({ className }: { className?: string }) => {
@@ -75,7 +74,7 @@ const ImageSlideshow = ({ className }: { className?: string }) => {
       <div className="relative w-full h-full">
         {images.map((image, index) => (
           <div
-            key={image}
+            key={index}
             className="absolute top-0 left-0 w-full h-full transition-all duration-500 ease-out"
             style={{
               ...getSlideStyle(index),
@@ -83,9 +82,9 @@ const ImageSlideshow = ({ className }: { className?: string }) => {
           >
             <Card className="w-full h-full rounded-3xl hover:shadow-none ">
               <img
-                src={image}
+                src={`${image}`}
                 alt="Slideshow"
-                className="w-full h-full rounded-2xl shadow-2xl object-cover object-center"
+                className="w-full h-full rounded-xl shadow-2xl object-cover object-center"
               />
             </Card>
           </div>

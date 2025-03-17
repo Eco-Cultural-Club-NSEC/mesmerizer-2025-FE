@@ -18,7 +18,6 @@ import FileUploadField from "../components/FileUploadField";
 import Card from "../components/Card";
 import Button2 from "../components/Button2";
 import { uploadToCloudinary, deleteFromCloudinary } from "../utils/cloudinary";
-import useProgressiveImage from "../hooks/useProgressiveImage";
 
 interface RegistrationFormInput {
   name: { name: string }[];
@@ -68,10 +67,6 @@ interface CustomFileInput extends HTMLInputElement {
 }
 
 const Registration = () => {
-  const eventImg_lazy = "/pics/lazy_imgs/Events_lazy.webp";
-  const eventImg_main = "/pics/Events.webp";
-  const eventSrc = useProgressiveImage(eventImg_lazy, eventImg_main);
-
   const location = useLocation();
   const preSelectedEventId = location.state?.eventId;
   const [event, setEvent] = useState<Event>(
@@ -246,7 +241,7 @@ const Registration = () => {
       <div
         className="h-screen w-full fixed top-0 left-0 bg-cover bg-center transition-opacity duration-500 ease-in-out"
         style={{
-          backgroundImage: `url(${eventSrc})`,
+          backgroundImage: "url('/pics/Events.webp')",
         }}
       ></div>
       <div className="text-center mb-12 relative z-10">

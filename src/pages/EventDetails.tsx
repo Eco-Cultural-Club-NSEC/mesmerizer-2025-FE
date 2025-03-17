@@ -62,7 +62,7 @@ const EventDetails = () => {
 
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="transition-transform duration-200 hover:-translate-y-1">
-                <Card>
+                <Card className="hover:shadow-none">
                   <div className="flex items-center">
                     <Clock className="mr-4 text-[rgb(var(--color-primary))]" />
                     <div>
@@ -74,7 +74,7 @@ const EventDetails = () => {
               </div>
 
               <div className="transition-transform duration-200 hover:-translate-y-1">
-                <Card>
+                <Card className="hover:shadow-none">
                   <div className="flex items-center">
                     <MapPin className="mr-4 text-[rgb(var(--color-secondary))]" />
                     <div>
@@ -86,7 +86,7 @@ const EventDetails = () => {
               </div>
 
               <div className="transition-transform duration-200 hover:-translate-y-1">
-                <Card>
+                <Card className="hover:shadow-none">
                   <div className="flex items-center">
                     <Calendar className="mr-4 text-[rgb(var(--color-accent))]" />
                     <div>
@@ -98,7 +98,7 @@ const EventDetails = () => {
               </div>
 
               <div className="transition-transform duration-200 hover:-translate-y-1">
-                <Card>
+                <Card className="hover:shadow-none">
                   <div className="flex items-center">
                     <Users className="mr-4 text-[rgb(var(--color-purple))]" />
                     <div>
@@ -113,7 +113,7 @@ const EventDetails = () => {
               </div>
 
               <div className="transition-transform duration-200 hover:-translate-y-1">
-                <Card>
+                <Card className="hover:shadow-none">
                   <div className="flex items-center">
                     <BadgeIndianRupee className="mr-4 text-[rgb(var(--color-indigo))]" />
                     <div>
@@ -125,7 +125,7 @@ const EventDetails = () => {
               </div>
 
               <div className="transition-transform duration-200 hover:-translate-y-1">
-                <Card>
+                <Card className="hover:shadow-none">
                   <div className="flex items-center">
                     <ScanLine className="mr-4 text-[rgb(var(--color-orange))]" />
                     <div>

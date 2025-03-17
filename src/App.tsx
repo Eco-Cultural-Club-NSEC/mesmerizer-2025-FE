@@ -22,7 +22,7 @@ function App() {
     <ErrorBoundary>
       <Router>
         <ScrollToTop />
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col overflow-hidden">
           <Suspense fallback={<Fallback />}>
             <Navbar />
             <Routes>

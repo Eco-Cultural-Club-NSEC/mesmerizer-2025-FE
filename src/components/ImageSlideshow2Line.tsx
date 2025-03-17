@@ -1,9 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { X } from "lucide-react";
-import { images as imgs } from "../images";
+import { images } from "../images";
 import Card from "./Card";
-
-const images = imgs.map((url) => `${url}?auto=format&fit=crop&w=800&q=80`);
 
 function ImageSlideshow2({ className }: { className?: string }) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -53,13 +51,13 @@ function ImageSlideshow2({ className }: { className?: string }) {
     // Create 4 sets of images to ensure smooth transition
     const sets = [...images, ...images, ...images, ...images];
     return sets.map((img, i) => (
-      <Card key={`${img}-${i}`}>
+      <Card key={`${img}-${i}`} className="hover:shadow-none">
         <div
           className="w-[300px] h-[300px] flex-shrink-0 cursor-pointer overflow-hidden rounded-lg"
           onClick={() => setSelectedImage(img)}
         >
           <img
-            src={img}
+            src={`${img}`}
             alt={`Landscape ${i}`}
             className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
             loading="eager"

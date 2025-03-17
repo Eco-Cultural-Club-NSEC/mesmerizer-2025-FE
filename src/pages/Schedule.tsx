@@ -1,7 +1,6 @@
 import { Calendar, Clock, MapPin, Star } from "lucide-react";
 import { events } from "../data.ts";
 import Card from "../components/Card.tsx";
-import useProgressiveImage from "../hooks/useProgressiveImage.ts";
 
 const days = new Set(events.map((event) => event.date));
 
@@ -13,15 +12,12 @@ const getDayName = (dateStr: string): string => {
 };
 
 const Schedule = () => {
-  const contactImg_lazy = "/pics/lazy_imgs/Contact_lazy.webp";
-  const contactImg_main = "/pics/Contact.webp";
-  const contactSrc = useProgressiveImage(contactImg_lazy, contactImg_main);
   return (
     <section className="pt-24 pb-16 pattern-diagonal text-white">
       <div
         className="h-screen w-full fixed left-0 bg-cover bg-center inset-0 before:fixed before:inset-0 before:bg-black before:opacity-20 before:z-0 transition-opacity duration-500 ease-in-out"
         style={{
-          backgroundImage: `url(${contactSrc})`,
+          backgroundImage: 'url("/pics/Contact.webp")',
         }}
       ></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
