@@ -187,7 +187,7 @@ const Registration = () => {
       const response = await fetch(
         `${
           import.meta.env.VITE_VERCEL_ENV_BACKEND_URL
-        }/api/v1/participant/register`,
+        }/api/v1/participants/register`,
         {
           method: "POST",
           headers: {
