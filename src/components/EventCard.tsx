@@ -21,7 +21,7 @@ const EventCard = ({ cardClassName, event }: EventCardProp) => {
           />
         </div>
 
-        <h3 className="text-2xl font-bold mb-2">{event.title}</h3>
+        <h2 className="text-2xl mb-2">{event.title}</h2>
 
         <div className="space-y-2 mb-4">
           <div className="flex items-center">

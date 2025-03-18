@@ -29,7 +29,7 @@ class ErrorBoundary extends Component<Props, State> {
       return (
         <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white p-4">
           <div className="max-w-md text-center">
-            <h1 className="text-4xl font-bold mb-4">
+            <h1 className="text-4xl mb-4">
               Oops! Something went wrong
             </h1>
             <p className="mb-4 text-gray-400">

@@ -15,6 +15,8 @@ const Gallery = lazy(() => import("./pages/Gallery"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Schedule = lazy(() => import("./pages/Schedule"));
 const Registration = lazy(() => import("./pages/Registration"));
+const RegistrationSuccess = lazy(() => import("./pages/RegistrationSuccess"));
+const RegistrationFailure = lazy(() => import("./pages/RegistrationFailure"));
 // const ComingSoon = lazy(() => import("./pages/ComingSoon"));
 
 function App() {
@@ -33,6 +35,14 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/schedule" element={<Schedule />} />
               <Route path="/register" element={<Registration />} />
+              <Route
+                path="/registration-success"
+                element={<RegistrationSuccess />}
+              />
+              <Route
+                path="/registration-failed"
+                element={<RegistrationFailure />}
+              />
             </Routes>
             <Footer />
           </Suspense>

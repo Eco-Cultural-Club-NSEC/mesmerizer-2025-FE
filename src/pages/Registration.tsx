@@ -1,5 +1,5 @@
 import { useFieldArray, useForm } from "react-hook-form";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   User,
   Mail,
@@ -10,6 +10,7 @@ import {
   HandCoins,
   UserPlus,
   UserMinus,
+  Loader2,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { events } from "../data";
@@ -45,27 +46,6 @@ interface RegistrationFormSend {
   transaction_screenshot: string;
 }
 
-// interface RegistrationFormSend {
-//   eventTitle: string;
-//   eventCode: string;
-//   eventDay: string;
-//   eventTime: string;
-//   eventLocation: string;
-//   teamSize: number;
-//   teamLeadName: { name: string };
-//   email: string;
-//   whatsappNumber: string;
-//   alternatePhone: string;
-//   college: string;
-//   upiTransectionId: string;
-//   paySS: string;
-//   participantNames: { name: string }[];
-// }
-
-interface CustomFileInput extends HTMLInputElement {
-  reset: () => void;
-}
-
 const Registration = () => {
   const location = useLocation();
   const preSelectedEventId = location.state?.eventId;
@@ -77,14 +57,15 @@ const Registration = () => {
     register,
     control,
     handleSubmit,
-    reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<RegistrationFormInput>();
 
   const { fields, append, remove, replace } = useFieldArray({
     control,
     name: "name",
   });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (event) {
@@ -127,15 +108,6 @@ const Registration = () => {
   const onSubmit = async (data: RegistrationFormInput) => {
     let uploadedImageData = null;
     try {
-      // Show loading state
-      const submitButton = document.querySelector(
-        'button[type="submit"]'
-      ) as HTMLButtonElement;
-      if (submitButton) {
-        submitButton.disabled = true;
-        submitButton.textContent = "Uploading...";
-      }
-
       // Upload image to Cloudinary if exists
       if (data.transaction_screenshot) {
         uploadedImageData = await uploadToCloudinary(
@@ -161,23 +133,6 @@ const Registration = () => {
         transaction_id: data.transaction_id,
         transaction_screenshot: uploadedImageData.secure_url,
       };
-      // const submissionData: RegistrationFormSend = {
-      //   eventTitle: data.event,
-      //   eventCode: event.code,
-      //   eventDay: event.date,
-      //   eventTime: event.time,
-      //   eventLocation: event.location,
-      //   teamSize: data.name.length,
-      //   teamLeadName: data.name[0],
-      //   email: data.email,
-      //   whatsappNumber: data.whatsapp_no,
-      //   alternatePhone: data.alt_phone,
-      //   college: data.collage_name,
-      //   upiTransectionId: data.transaction_id,
-      //   paySS: uploadedImageData.secure_url,
-      //   participantNames: data.name,
-      // };
-      // console.log("Submitted Data: ", submissionData);
 
       const response = await fetch(
         `${
@@ -192,27 +147,12 @@ const Registration = () => {
         }
       );
 
-      if (!response.ok) {
+      if (response.status !== 200) {
         throw new Error("Registration failed");
       }
 
       // Handle success
-      alert("Registration successful!");
-      // Reset all form fields
-      reset();
-      // Reset event selection
-      setEvent(events[0]);
-      // Reset participant fields to initial state
-      const firstEvent = events[0];
-      const initialSize = firstEvent?.teamSize.min ?? 1;
-      replace(Array.from({ length: initialSize }, () => ({ name: "" })));
-      // Reset file field
-      const fileInput = document.querySelector(
-        'input[type="file"]'
-      ) as CustomFileInput;
-      if (fileInput && fileInput.reset) {
-        fileInput.reset();
-      }
+      navigate("/registration-success");
     } catch (error) {
       // Delete uploaded image if registration failed
       if (uploadedImageData?.public_id) {
@@ -223,16 +163,7 @@ const Registration = () => {
         }
       }
       console.error("Error during registration:", error);
-      alert("Registration failed. Please try again.");
-    } finally {
-      // Reset button state
-      const submitButton = document.querySelector(
-        'button[type="submit"]'
-      ) as HTMLButtonElement;
-      if (submitButton) {
-        submitButton.disabled = false;
-        submitButton.textContent = "Submit Registration";
-      }
+      navigate("/registration-failed");
     }
   };
 
@@ -252,7 +183,7 @@ const Registration = () => {
         </p>
       </div>
       <div className="relative z-10">
-        <Card className="hover:shadow-none">
+        <Card className="hover:shadow-none font-sans">
           <div className="flex flex-col sm:flex-row items-center justify-around">
             <div className="flex flex-col items-center justify-center">
               <img
@@ -265,9 +196,9 @@ const Registration = () => {
             </div>
 
             <div className="mt-6 sm:mt-0 flex flex-col items-center justify-center">
-              <p>upi id: mesmerizer2025@ibl</p>
-              <p>name: Mesmerizer 2025</p>
-              <p>Contact no.: 9876543210</p>
+              <p>UPI ID: mesmerizer2025@ibl</p>
+              <p>Name: Mesmerizer 2025</p>
+              <p>Contact no: 9876543210</p>
             </div>
           </div>
         </Card>
@@ -293,7 +224,7 @@ const Registration = () => {
                           events[0]
                       );
                     }}
-                    className="w-full p-4 cursor-pointer bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
+                    className="w-full p-4 cursor-pointer bg-transparent border-2 border-white/50 rounded-lg focus:outline-none font-sans"
                   >
                     <option
                       value=""
@@ -356,7 +287,7 @@ const Registration = () => {
                     type="text"
                     id={`participant${index}`}
                     placeholder="Enter Name"
-                    className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
+                    className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none font-sans"
                     {...register(`name.${index}.name`, {
                       required: "Name is required",
                       validate: {
@@ -384,7 +315,7 @@ const Registration = () => {
                   type="email"
                   id="email"
                   placeholder="Enter Email"
-                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
+                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none font-sans"
                   {...register("email", {
                     required: "Email is required",
                     pattern: {
@@ -409,7 +340,7 @@ const Registration = () => {
                   type="tel"
                   id="whatsapp_no"
                   placeholder="Enter Whatsapp Number"
-                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
+                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none font-sans"
                   {...register("whatsapp_no", {
                     required: "Whatsapp number is required",
                     pattern: {
@@ -434,7 +365,7 @@ const Registration = () => {
                   type="tel"
                   id="alt_phone"
                   placeholder="Enter Alternate Phone Number"
-                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
+                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none font-sans"
                   {...register("alt_phone", {
                     required: "Alternate phone number is required",
                     pattern: {
@@ -463,7 +394,7 @@ const Registration = () => {
                   type="text"
                   id="collage_name"
                   placeholder="Enter College/University"
-                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
+                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none font-sans"
                   {...register("collage_name", {
                     required: "College name is required",
                     validate: {
@@ -495,7 +426,7 @@ const Registration = () => {
                   id="amount_paid"
                   min="1"
                   placeholder="Enter Amount Paid"
-                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none font-sans"
                   {...register("amount_paid", {
                     required: "Amount paid is required",
                     min: {
@@ -532,7 +463,7 @@ const Registration = () => {
                   id="transaction_id"
                   min="1"
                   placeholder="Enter UPI Transaction Id"
-                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none"
+                  className="w-full p-4 bg-transparent border-2 border-white/50 rounded-lg focus:outline-none font-sans"
                   {...register("transaction_id", {
                     required: "UPI Transaction ID is required",
                     validate: {
@@ -551,9 +482,43 @@ const Registration = () => {
             </div>
           </Card>
 
-          <Button2 type="submit" className="w-full text-center text-xl py-4">
-            Submit Registration
-          </Button2>
+          {isSubmitting ? (
+            <Card className="hover:shadow-none">
+              <div className="space-y-4">
+                <Button2
+                  type="submit"
+                  className="w-full text-center text-xl py-4 relative"
+                >
+                  {/* {isSubmitting ? ( */}
+                  <>
+                    <Loader2
+                      className="animate-spin inline-block mr-2"
+                      size={20}
+                    />
+                    Uploading...
+                  </>
+                  {/* ) : (
+                    "Submit Registration"
+                  )} */}
+                </Button2>
+                {/* {isSubmitting && ( */}
+                <p className="text-center text-whiteanimate-pulse">
+                  Please do not close or refresh the page while registration is
+                  in progress...
+                </p>
+                {/* )} */}
+              </div>
+            </Card>
+          ) : (
+            <div className="space-y-4">
+              <Button2
+                type="submit"
+                className="w-full text-center text-xl py-4 relative"
+              >
+                Submit Registration
+              </Button2>
+            </div>
+          )}
         </form>
       </div>
     </section>

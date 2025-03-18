@@ -15,7 +15,7 @@ import EventCard from "../components/EventCard";
 import ImageSlideshow2Line from "../components/ImageSlideshow2Line";
 import Button2 from "../components/Button2";
 
-const eventDate = new Date("2025-04-01").getTime();
+const eventDate = new Date("2025-04-03").getTime();
 
 const featuredEvents = events.slice(0, 3);
 
@@ -152,8 +152,8 @@ const Home = () => {
                   About The Festival
                 </h2>
                 <p className="text-lg mb-6 text-custom-white">
-                  CultFest '24 is more than just a festival - it's a celebration
-                  of creativity, culture, and community. Join us for three days
+                  Mesmerizer is more than just a festival - it's a celebration
+                  of creativity, culture, and community. Join us for two days
                   of music, dance, art, and more as we bring together talented
                   individuals from across the country.
                 </p>
@@ -162,7 +162,7 @@ const Home = () => {
                     <Calendar className="mr-4" />
                     <div>
                       <h3 className="">Date</h3>
-                      <p>April 15-17, 2024</p>
+                      <p>April 3-4, 2025</p>
                     </div>
                   </div>
                   <div className="flex items-center">

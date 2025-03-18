@@ -135,7 +135,7 @@ const FileUploadField = <T extends FieldValues>({
           </label>
 
           <div
-            className={`relative border-2 rounded-lg transition-all duration-200 ease-in-out ${
+            className={`font-sans relative border-2 rounded-lg transition-all duration-200 ease-in-out ${
               isDragging
                 ? "border-white bg-white/50 scale-102"
                 : "border-white/50 hover:bg-white/10"

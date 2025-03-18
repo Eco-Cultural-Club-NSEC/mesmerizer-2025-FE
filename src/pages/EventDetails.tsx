@@ -27,7 +27,7 @@ const EventDetails = () => {
   if (!event) {
     return (
       <div className="pt-24 pb-16 text-center">
-        <h1 className="text-4xl font-bold mb-4">Event not found</h1>
+        <h1 className="text-4xl mb-4">Event not found</h1>
         <Link to="/events" className="inline-flex items-center">
           <ArrowLeft className="mr-2" /> Back to Events
         </Link>
