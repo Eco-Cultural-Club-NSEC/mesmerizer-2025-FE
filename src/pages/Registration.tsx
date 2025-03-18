@@ -147,8 +147,9 @@ const Registration = () => {
         }
       );
 
-      if (response.status !== 200) {
-        throw new Error("Registration failed");
+      if (response.status !== 201) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
       }
 
       // Handle success
@@ -163,7 +164,11 @@ const Registration = () => {
         }
       }
       console.error("Error during registration:", error);
-      navigate("/registration-failed");
+      navigate("/registration-failed", {
+        state: {
+          errorMessage: error instanceof Error ? error.message : null,
+        },
+      });
     }
   };
 

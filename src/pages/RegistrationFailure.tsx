@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { XCircle, Home, RefreshCw, MessageCircle } from "lucide-react";
 import Button2 from "../components/Button2";
 
 const RegistrationFailure = () => {
+  const location = useLocation();
+  const errorMessage = location.state?.errorMessage;
+
   return (
     <main className="min-h-screen flex items-center justify-center p-4">
       <div
@@ -26,9 +29,13 @@ const RegistrationFailure = () => {
             Registration Failed
           </h1>
 
-          <p className="text-xl mb-8 text-gray-200">
-            Oops! Something went wrong during registration.
-          </p>
+          {errorMessage ? (
+            <p className="text-xl mb-8 text-gray-200">{errorMessage}</p>
+          ) : (
+            <p className="text-xl mb-8 text-gray-200">
+              Oops! Something went wrong during registration.
+            </p>
+          )}
 
           {/* Error Details Card */}
           <div className="bg-white/5 rounded-xl p-6 mb-8 backdrop-blur-sm">
