@@ -196,14 +196,14 @@ const Registration = () => {
                 alt="QR Code"
                 className="w-[200px] object-cover rounded-lg"
               />
-              <p className="mt-2">Scan the QR code to pay</p>
-              <p>the registration fee</p>
+              <p className="mt-2">Scan the QR code with any upi</p>
+              <p>app to pay the registration fee</p>
             </div>
 
             <div className="mt-6 sm:mt-0 flex flex-col items-center justify-center">
-              <p>UPI ID: mesmerizer2025@ibl</p>
-              <p>Name: Mesmerizer 2025</p>
-              <p>Contact no: 9876543210</p>
+              <p>UPI ID: ashutoshroy114@okhdfcbank</p>
+              <p>Name: Ashutosh Roy</p>
+              <p>Contact no: 9693186464</p>
             </div>
           </div>
         </Card>

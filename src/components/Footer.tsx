@@ -77,7 +77,7 @@ const Footer = () => {
                     href="mailto:contact@cultfest.com"
                     className="hover:text-rgb(var(--color-primary))"
                   >
-                    contact@cultfest.com
+                    official.ecocultural@gmail.com
                   </a>
                 </li>
                 <li>
@@ -85,7 +85,7 @@ const Footer = () => {
                     href="tel:+1234567890"
                     className="hover:text-rgb(var(--color-primary))"
                   >
-                    +1 (234) 567-890
+                    9693186464
                   </a>
                 </li>
               </ul>
