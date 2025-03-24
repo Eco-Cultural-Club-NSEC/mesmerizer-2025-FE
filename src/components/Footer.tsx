@@ -42,6 +42,14 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
+                    to="/schedule"
+                    className="hover:text-rgb(var(--color-primary))"
+                  >
+                    Schedule
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     to="/gallery"
                     className="hover:text-rgb(var(--color-primary))"
                   >

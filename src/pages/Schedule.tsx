@@ -2,6 +2,8 @@ import { Calendar, Clock, MapPin, Star } from "lucide-react";
 import { events } from "../data.ts";
 import Card from "../components/Card.tsx";
 import { AttractionCard } from "../components/AttractionCard.tsx";
+import { Link } from "react-router-dom";
+import Button2 from "../components/Button2.tsx";
 
 const days = new Set(events.map((event) => event.date));
 
@@ -72,6 +74,17 @@ const Schedule = () => {
             attractionTime="6th April Afternoon"
             artistOrBand="Band: Reveal Soon"
           />
+        </div>
+        <div className="space-x-4 flex text-white justify-center max-sm:flex-col items-center max-sm:pr-4 mt-8">
+          <Link
+            to="https://drive.google.com/uc?export=download&id=11JmHZi8RXzqSfOCJazaLboNKyxdvLKxo"
+            className="max-sm:ml-4 max-sm:w-full"
+          >
+            <Button2 className="max-sm:w-full">Download Brochure</Button2>
+          </Link>
+          <Link to="/events" className="max-sm:ml-0 max-sm:mt-4 max-sm:w-full">
+            <Button2 className="px-8 max-sm:w-full">All Events</Button2>
+          </Link>
         </div>
       </div>
     </section>

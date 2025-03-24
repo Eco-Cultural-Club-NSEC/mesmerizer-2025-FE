@@ -1,12 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import {
-  ArrowRight,
-  Calendar,
-  MapPin,
-  // Users,
-  Star,
-  Camera,
-} from "lucide-react";
+import { ArrowRight, Calendar, MapPin, Star, Camera, Drum } from "lucide-react";
 import { Link } from "react-router-dom";
 import { events } from "../data";
 import Card from "../components/Card";
@@ -14,7 +7,6 @@ import Button from "../components/Button";
 import EventCard from "../components/EventCard";
 import ImageSlideshow2Line from "../components/ImageSlideshow2Line";
 import Button2 from "../components/Button2";
-import { AttractionCard } from "../components/AttractionCard";
 
 const eventDate = new Date("2025-04-05").getTime();
 
@@ -76,7 +68,7 @@ const Home = () => {
     <main>
       {/* Hero Section with Comic Pattern */}
       <section
-        className="relative h-auto flex items-center justify-center hero-pattern pb-20 border-b-[10px] border-black"
+        className="relative h-screen flex items-center justify-center hero-pattern pb-20 border-b-[10px] border-black"
         style={{
           backgroundImage: "url('/pics/Main_Theme_Hero.webp')",
           backgroundSize: "cover",
@@ -119,26 +111,6 @@ const Home = () => {
               </div>
             </div>
           </div>
-
-          <div className="grid grid-cols-1 gap-4 mx-auto mb-8 text-white">
-            <AttractionCard
-              // className="bg-black bg-opacity-30"
-              attractionName="Band Performance"
-              attractionLocation="Boys Common Room"
-              attractionTime="6th April, Afternoon"
-              artistOrBand="Band: Reveal Soon"
-            />
-            {/* <AttractionCard
-              attractionName="Band Performance"
-              attractionLocation="Boys Common Room"
-              attractionTime="Afternoon"
-              artistOrBand="Band: Anounced Soon"
-            /> */}
-            {/* <a href="https://drive.google.com/file/d/11JmHZi8RXzqSfOCJazaLboNKyxdvLKxo/view?usp=sharing" download="Mesmerizer_Brochure.pdf">
-              <Button2>Download Brochure</Button2>
-            </a> */}
-          </div>
-
           <div className="space-x-4 flex text-white justify-around max-sm:flex-col items-center max-sm:pr-4">
             <Link to="/events" className="max-sm:ml-4">
               <Button className="">
@@ -150,6 +122,64 @@ const Home = () => {
                 Register Now <Star className="ml-2" />
               </Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Special Attraction */}
+      <section className="relative py-20 pattern-circuit text-white border-b-[10px] border-black transition-opacity duration-500 ease-in-out">
+        <div
+          className="absolute inset-0 before:absolute before:inset-0 before:bg-black before:opacity-10 before:z-0"
+          style={{
+            backgroundImage: "url('/pics/attractionCard_bg.webp')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        ></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <Card className="hover:shadow-none">
+                <h2 className="text-4xl font-black mb-6 text-white">
+                  Band Performance
+                </h2>
+                <p className="text-lg mb-6 text-custom-white">
+                  Mesmerizer Presents: A Electrifying Beats! 🎸 Get ready to
+                  groove as the most sensational band lights up the stage at
+                  Mesmerizer! Feel the energy, sing along, and let the music
+                  take over. Don't miss the ultimate musical experience! 🔥✨
+                </p>
+                <div className="space-y-4 mb-8 text-custom-white">
+                  <div className="flex items-center">
+                    <Calendar className="mr-4 text-[rgb(var(--color-accent))]" />
+                    <div>
+                      <h3 className="">Date</h3>
+                      <p>6th April, Afternoon</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <MapPin className="mr-4 text-[rgb(var(--color-secondary))]" />
+                    <div>
+                      <h3 className="">Location</h3>
+                      <p>Boys Common Room</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <Drum className="mr-4 text-[rgb(var(--color-primary))]" />
+                    <div>
+                      <h3 className="">Band</h3>
+                      <p>Reveal Soon</p>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+            <Card className="hover:shadow-none">
+              <img
+                src="https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778595/mesmerizer/webp/um5rkyullhnt4rmyhrsv.webp"
+                alt=""
+              />
+            </Card>
           </div>
         </div>
       </section>
@@ -171,10 +201,6 @@ const Home = () => {
                   About The Festival
                 </h2>
                 <p className="text-lg mb-6 text-custom-white">
-                  {/* Mesmerizer is more than just a festival - it's a celebration
-                  of creativity, culture, and community. Join us for two days
-                  of music, dance, art, and more as we bring together talented
-                  individuals from across the country. */}
                   Mesmerizer, the annual inter-college cultural fest at Netaji
                   Subhash Engineering College since 2002, has evolved into an
                   iconic event, featuring artists like Javed Ali, KK, Mohammad
@@ -190,26 +216,19 @@ const Home = () => {
                 </p>
                 <div className="space-y-4 mb-8 text-custom-white">
                   <div className="flex items-center">
-                    <Calendar className="mr-4" />
+                    <Calendar className="mr-4 text-[rgb(var(--color-accent))]" />
                     <div>
                       <h3 className="">Date</h3>
                       <p>April 05-06, 2025</p>
                     </div>
                   </div>
                   <div className="flex items-center">
-                    <MapPin className="mr-4" />
+                    <MapPin className="mr-4 text-[rgb(var(--color-secondary))]" />
                     <div>
                       <h3 className="">Venue</h3>
                       <p>NSEC College Campus</p>
                     </div>
                   </div>
-                  {/* <div className="flex items-center">
-                    <Users className="mr-4" />
-                    <div>
-                      <h3 className="">Participants</h3>
-                      <p>1000+ Students</p>
-                    </div>
-                  </div> */}
                 </div>
                 <Link to="/schedule" className="">
                   <Button className="">
@@ -249,9 +268,14 @@ const Home = () => {
               <EventCard key={event.id} event={event} />
             ))}
           </div>
-          <Link to="/events">
-            <Button2 className="mt-12">All Events</Button2>
-          </Link>
+          <div className="space-x-4 flex text-white justify-around max-sm:flex-col items-center max-sm:pr-4 mt-8">
+            <Link to="https://drive.google.com/uc?export=download&id=11JmHZi8RXzqSfOCJazaLboNKyxdvLKxo" className="max-sm:ml-4 max-sm:w-full">
+              <Button2 className="max-sm:w-full">Download Brochure</Button2>
+            </Link>
+            <Link to="/events" className="max-sm:ml-0 max-sm:mt-4 max-sm:w-full">
+              <Button2 className="px-8 max-sm:w-full">All Events</Button2>
+            </Link>
+          </div>
         </div>
       </section>
 

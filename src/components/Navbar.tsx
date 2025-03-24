@@ -37,6 +37,12 @@ const Navbar = () => {
               Events
             </Link>
             <Link
+              to="/schedule"
+              className="hover:text-rgb(var(--color-primary))"
+            >
+              Schedule
+            </Link>
+            <Link
               to="/gallery"
               className="hover:text-rgb(var(--color-primary))"
             >
@@ -81,6 +87,13 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               Events
+            </Link>
+            <Link
+              to="/schedule"
+              className="block px-3 py-2 rounded-md text-base font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Schedule
             </Link>
             <Link
               to="/gallery"

@@ -48,7 +48,7 @@ const RegistrationSuccess = () => {
             <div className="space-y-4">
               <div className="flex items-center justify-center space-x-2">
                 <Calendar className="text-green-400" />
-                <span>April 3-4, 2025</span>
+                <span>April 5-6, 2025</span>
               </div>
               <p className="text-sm text-gray-300">
                 Check your email for the confirmation and further details.
