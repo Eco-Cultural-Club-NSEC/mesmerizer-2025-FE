@@ -1,6 +1,7 @@
 import { Calendar, Clock, MapPin, Star } from "lucide-react";
 import { events } from "../data.ts";
 import Card from "../components/Card.tsx";
+import { AttractionCard } from "../components/AttractionCard.tsx";
 
 const days = new Set(events.map((event) => event.date));
 
@@ -65,6 +66,12 @@ const Schedule = () => {
               </div>
             </div>
           ))}
+          <AttractionCard
+            attractionName="Band Performance"
+            attractionLocation="Boys Common Room"
+            attractionTime="6th April Afternoon"
+            artistOrBand="Band: Reveal Soon"
+          />
         </div>
       </div>
     </section>

@@ -107,12 +107,32 @@ const Contact = () => {
                   <Phone className="mr-4 text-rose-300" />
                   <div>
                     <h3 className="">Phone</h3>
-                    <a
-                      href="tel:+1234567890"
-                      className="hover:text-[rgb(var(--color-secondary))]"
-                    >
-                      9693186464
-                    </a>
+                    <div className="flex flex-col">
+                      <a
+                        href="tel:+917044748396"
+                        className="hover:text-[rgb(var(--color-secondary))]"
+                      >
+                        Kazi Nafisa Parvin (President): +91 70447 48396
+                      </a>
+                      <a
+                        href="tel:+919330474248"
+                        className="hover:text-[rgb(var(--color-secondary))]"
+                      >
+                        Arka Maity (General Secretory): +91 93304 74248
+                      </a>
+                      <a
+                        href="tel:+916296993417"
+                        className="hover:text-[rgb(var(--color-secondary))]"
+                      >
+                        Sayan khan (PR Marketing Head): +91 62969 93417
+                      </a>
+                      <a
+                        href="tel:+919874268188"
+                        className="hover:text-[rgb(var(--color-secondary))]"
+                      >
+                        Sayani Halder (Cultural Coordinator): +91 98742 68188
+                      </a>
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-center">

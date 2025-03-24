@@ -3,7 +3,7 @@ import {
   ArrowRight,
   Calendar,
   MapPin,
-  Users,
+  // Users,
   Star,
   Camera,
 } from "lucide-react";
@@ -14,8 +14,9 @@ import Button from "../components/Button";
 import EventCard from "../components/EventCard";
 import ImageSlideshow2Line from "../components/ImageSlideshow2Line";
 import Button2 from "../components/Button2";
+import { AttractionCard } from "../components/AttractionCard";
 
-const eventDate = new Date("2025-04-03").getTime();
+const eventDate = new Date("2025-04-06").getTime();
 
 const featuredEvents = events.slice(0, 3);
 
@@ -75,14 +76,14 @@ const Home = () => {
     <main>
       {/* Hero Section with Comic Pattern */}
       <section
-        className="relative h-screen flex items-center justify-center hero-pattern max-md:h-auto max-md:pb-20 border-b-[10px] border-black"
+        className="relative h-auto flex items-center justify-center hero-pattern pb-20 border-b-[10px] border-black"
         style={{
           backgroundImage: "url('/pics/Main_Theme_Hero.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-md:pt-[20vh]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-32">
           <div className="text-5xl sm:text-6xl md:text-8xl font-black mb-4 text-custom-white dark:text-white ">
             Mesmerizer'25
           </div>
@@ -118,7 +119,25 @@ const Home = () => {
               </div>
             </div>
           </div>
-          {/* </motion.div> */}
+
+          <div className="grid grid-cols-1 gap-4 mx-auto mb-8 text-white">
+            <AttractionCard
+              // className="bg-black bg-opacity-30"
+              attractionName="Band Performance"
+              attractionLocation="Boys Common Room"
+              attractionTime="6th April, Afternoon"
+              artistOrBand="Band: Reveal Soon"
+            />
+            {/* <AttractionCard
+              attractionName="Band Performance"
+              attractionLocation="Boys Common Room"
+              attractionTime="Afternoon"
+              artistOrBand="Band: Anounced Soon"
+            /> */}
+            {/* <a href="https://drive.google.com/file/d/11JmHZi8RXzqSfOCJazaLboNKyxdvLKxo/view?usp=sharing" download="Mesmerizer_Brochure.pdf">
+              <Button2>Download Brochure</Button2>
+            </a> */}
+          </div>
 
           <div className="space-x-4 flex text-white justify-around max-sm:flex-col items-center max-sm:pr-4">
             <Link to="/events" className="max-sm:ml-4">
@@ -137,7 +156,7 @@ const Home = () => {
 
       {/* About Section */}
       <section
-        className="py-20 pattern-zigzag h-content md:h-screen flex items-center border-b-[10px] border-black"
+        className="py-20 pattern-zigzag h-auto flex items-center border-b-[10px] border-black"
         style={{
           backgroundImage: "url('/pics/About_us.webp')",
           backgroundSize: "cover",
@@ -145,40 +164,52 @@ const Home = () => {
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <Card>
                 <h2 className="text-4xl font-black mb-6 text-white">
                   About The Festival
                 </h2>
                 <p className="text-lg mb-6 text-custom-white">
-                  Mesmerizer is more than just a festival - it's a celebration
+                  {/* Mesmerizer is more than just a festival - it's a celebration
                   of creativity, culture, and community. Join us for two days
                   of music, dance, art, and more as we bring together talented
-                  individuals from across the country.
+                  individuals from across the country. */}
+                  Mesmerizer, the annual inter-college cultural fest at Netaji
+                  Subhash Engineering College since 2002, has evolved into an
+                  iconic event, featuring artists like Javed Ali, KK, Mohammad
+                  Irfan, and more, elevating it to unparalleled cultural
+                  heights. As we look forward to the 17 th edition in 2025, we
+                  invite potential sponsors to join us in safeguarding and
+                  promoting this cultural institution that is integral to
+                  Kolkata's cultural identity. Your support ensures Mesmerizer's
+                  legacy continues to inspire generations, where culture meets
+                  community, entertainment blends with enlightenment, and giving
+                  merges with celebration. Join us in creating the 17 th edition
+                  of Mesmerizer, a vital chapter in our cultural journey.
                 </p>
                 <div className="space-y-4 mb-8 text-custom-white">
                   <div className="flex items-center">
                     <Calendar className="mr-4" />
                     <div>
                       <h3 className="">Date</h3>
-                      <p>April 3-4, 2025</p>
+                      <p>April 05-06, 2025</p>
                     </div>
                   </div>
                   <div className="flex items-center">
                     <MapPin className="mr-4" />
                     <div>
                       <h3 className="">Venue</h3>
-                      <p>University Campus</p>
+                      <p>NSEC College Campus</p>
                     </div>
                   </div>
-                  <div className="flex items-center">
+                  {/* <div className="flex items-center">
                     <Users className="mr-4" />
                     <div>
                       <h3 className="">Participants</h3>
                       <p>1000+ Students</p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <Link to="/schedule" className="">
                   <Button className="">

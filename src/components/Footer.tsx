@@ -42,14 +42,6 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    to="/team"
-                    className="hover:text-rgb(var(--color-primary))"
-                  >
-                    Team
-                  </Link>
-                </li>
-                <li>
-                  <Link
                     to="/gallery"
                     className="hover:text-rgb(var(--color-primary))"
                   >
@@ -82,10 +74,34 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href="tel:+1234567890"
-                    className="hover:text-rgb(var(--color-primary))"
+                    href="tel:+917044748396"
+                    className="hover:text-[rgb(var(--color-secondary))]"
                   >
-                    9693186464
+                    Kazi Nafisa Parvin (President): <br></br> +91 70447 48396
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="tel:+919330474248"
+                    className="hover:text-[rgb(var(--color-secondary))]"
+                  >
+                    Arka Maity (General Secretory):<br></br> +91 93304 74248
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="tel:+916296993417"
+                    className="hover:text-[rgb(var(--color-secondary))]"
+                  >
+                    Sayan khan (PR Marketing Head):<br></br> +91 62969 93417
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="tel:+919874268188"
+                    className="hover:text-[rgb(var(--color-secondary))]"
+                  >
+                    Sayani Halder (Cultural Coordinator):<br></br> +91 98742 68188
                   </a>
                 </li>
               </ul>

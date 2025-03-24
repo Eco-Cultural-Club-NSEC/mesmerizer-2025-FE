@@ -3,7 +3,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Card from "./Card";
 
 const images = [
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778595/mesmerizer/webp/um5rkyullhnt4rmyhrsv.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778598/mesmerizer/webp/szjdvqk8tkxvtcia8wkx.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778600/mesmerizer/webp/snkl2etorgrjqbqrvldb.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778602/mesmerizer/webp/fzrjbz0o6smwutrlryjs.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778604/mesmerizer/webp/jwz2q8qecvdwosxxuuyz.webp",
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223453/mesmerizer/webp/s94uldwrsyuo5rwswtrl.webp",
+  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778606/mesmerizer/webp/htr1x2awnccszezc0s6l.webp",
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223596/mesmerizer/webp/g28zc4efs3wpbtd8ttrh.webp",
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223447/mesmerizer/webp/zs1kiw5u7jnreereeegb.webp",
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223457/mesmerizer/webp/lxquatqshwoensb7a8bu.webp",
@@ -11,7 +17,6 @@ const images = [
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223578/mesmerizer/webp/ykfj4o2u0v61nnndo50h.webp",
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223467/mesmerizer/webp/fjei8pxernmzqxt9v1j0.webp",
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223491/mesmerizer/webp/wa4xmqaoz1eqtuwwduzs.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223506/mesmerizer/webp/lhcri3simimkrk8rbbcj.webp",
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223472/mesmerizer/webp/clevl8ezmz5ukwlijldf.webp",
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223462/mesmerizer/webp/r6gxkhwt7vvunq25zp3e.webp",
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223560/mesmerizer/webp/gjsejcjfgx8hahdpt7nt.webp",
@@ -108,7 +113,7 @@ const ImageSlideshow = ({ className }: { className?: string }) => {
       </button>
 
       {/* Progress Indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2 max-sm:w-[85dvw] items-center justify-center">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2 max-sm:w-[85dvw] items-center justify-center max-sm:hidden">
         {images.map((_, index) => (
           <div
             key={index}

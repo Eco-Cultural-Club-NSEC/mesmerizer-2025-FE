@@ -11,6 +11,7 @@ import {
   UserPlus,
   UserMinus,
   Loader2,
+  Star,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { events } from "../data";
@@ -203,7 +204,19 @@ const Registration = () => {
             <div className="mt-6 sm:mt-0 flex flex-col items-center justify-center">
               <p>UPI ID: ashutoshroy114@okhdfcbank</p>
               <p>Name: Ashutosh Roy</p>
-              <p>Contact no: 9693186464</p>
+              <a
+                href="tel:+919693186464"
+                className="hover:text-[rgb(var(--color-secondary))]"
+              >
+                Contact no: 96931 86464
+              </a>
+              <div className="flex items-center justify-center mt-2">
+                <Star className="text-[rgb(var(--color-primary))] mr-4" />
+                <div>
+                  <p>Please contact this number</p>{" "}
+                  <p>in case of payment failure</p>
+                </div>
+              </div>
             </div>
           </div>
         </Card>
