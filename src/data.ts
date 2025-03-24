@@ -350,7 +350,7 @@ export const events: Event[] = [
       "Registration: Late registrations will not be accepted. Ensure timely submission of entries.",
     ],
     teamSize: {
-      min: 1,
+      min: 2,
       max: 6,
     },
   },
@@ -387,7 +387,7 @@ export const events: Event[] = [
       "Registration: Late registrations will not be accepted. Ensure timely entry.",
     ],
     teamSize: {
-      min: 1,
+      min: 2,
       max: 10,
     },
   },

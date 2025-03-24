@@ -5,9 +5,7 @@ import Card from "./Card";
 const images = [
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778595/mesmerizer/webp/um5rkyullhnt4rmyhrsv.webp",
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778598/mesmerizer/webp/szjdvqk8tkxvtcia8wkx.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778600/mesmerizer/webp/snkl2etorgrjqbqrvldb.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778602/mesmerizer/webp/fzrjbz0o6smwutrlryjs.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778604/mesmerizer/webp/jwz2q8qecvdwosxxuuyz.webp",
+  // "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778602/mesmerizer/webp/fzrjbz0o6smwutrlryjs.webp",
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223453/mesmerizer/webp/s94uldwrsyuo5rwswtrl.webp",
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778606/mesmerizer/webp/htr1x2awnccszezc0s6l.webp",
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223596/mesmerizer/webp/g28zc4efs3wpbtd8ttrh.webp",
@@ -20,7 +18,7 @@ const images = [
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223472/mesmerizer/webp/clevl8ezmz5ukwlijldf.webp",
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223462/mesmerizer/webp/r6gxkhwt7vvunq25zp3e.webp",
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223560/mesmerizer/webp/gjsejcjfgx8hahdpt7nt.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223495/mesmerizer/webp/ots4a8vk4ahqr7fn1sdq.webp",
+  // "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223495/mesmerizer/webp/ots4a8vk4ahqr7fn1sdq.webp",
   "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223488/mesmerizer/webp/s7cm7zggpbzf02nsx72b.webp",
 ];
 

@@ -16,7 +16,7 @@ import ImageSlideshow2Line from "../components/ImageSlideshow2Line";
 import Button2 from "../components/Button2";
 import { AttractionCard } from "../components/AttractionCard";
 
-const eventDate = new Date("2025-04-06").getTime();
+const eventDate = new Date("2025-04-05").getTime();
 
 const featuredEvents = events.slice(0, 3);
 
@@ -89,7 +89,7 @@ const Home = () => {
           </div>
 
           <div className="text-xl md:text-2xl mb-8 text-custom-white dark:text-white">
-            Where Culture Meets Creativity
+            Live the lore, feel the fest!
           </div>
 
           {/* Countdown Timer */}
@@ -244,7 +244,7 @@ const Home = () => {
             <p className="text-xl">Don't miss out on our flagship events</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 w-full">
             {featuredEvents.map((event) => (
               <EventCard key={event.id} event={event} />
             ))}
