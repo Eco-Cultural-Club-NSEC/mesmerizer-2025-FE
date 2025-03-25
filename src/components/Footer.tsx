@@ -93,7 +93,7 @@ const Footer = () => {
                     href="tel:+919330474248"
                     className="hover:text-[rgb(var(--color-secondary))]"
                   >
-                    Arka Maity (General Secretory):<br></br> +91 93304 74248
+                    Arka Maity (General Secretary):<br></br> +91 93304 74248
                   </a>
                 </li>
                 <li>

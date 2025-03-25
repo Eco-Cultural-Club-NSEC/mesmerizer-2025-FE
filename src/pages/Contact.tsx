@@ -118,7 +118,7 @@ const Contact = () => {
                         href="tel:+919330474248"
                         className="hover:text-[rgb(var(--color-secondary))]"
                       >
-                        Arka Maity (General Secretory): +91 93304 74248
+                        Arka Maity (General Secretary): +91 93304 74248
                       </a>
                       <a
                         href="tel:+916296993417"
