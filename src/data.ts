@@ -218,11 +218,11 @@ export const events: Event[] = [
   },
   {
     id: "7",
-    title: "Eastern Dance Solo",
+    title: "Eastern Solo Dance",
     date: "06-04-2025",
     time: "first half",
     image:
-      "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742777485/mesmerizer/webp/aikyhrn21vxxgjyngbfi.webp",
+      "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742919596/mesmerizer/webp/gugdiu3cmy1mhps5e6rh.webp",
     location: "Boys Common Room",
     tagline: "chance pe dance marle...",
     code: "GRACE AND GRIN",
