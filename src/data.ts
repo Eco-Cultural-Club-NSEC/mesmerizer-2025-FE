@@ -91,10 +91,10 @@ export const events: Event[] = [
       },
     ],
     rules: [
-      "Participation: Individual participation only.",
-      "Round Division: Round 1: Guess What? \n Round 2: General Information \n Round 3: Rapid Fire – For Tie-breakers",
-      "Quizmaster: The event will be conducted by an expert quizmaster.",
-      "Rule Changes: Rules are subject to change at the discretion of the Organizing Committee.",
+      "Participation: Individual participation or team participation. Individual participant must find a teammate on the spot otherwise they won't be able to participate and will be given a refund.",
+      "Cross college teams are allowed. On spot registration will also be going on the day of the event.",
+      "Qualification round: Prelims consisting of 16 questions will be conducted. A total of 6 team will be selected for the final round. Final round will have standard pounce and bounce rules",
+      "The Quiz Master's decision will be final on the day of the event",
     ],
     teamSize: {
       min: 1,
