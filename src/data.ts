@@ -91,6 +91,7 @@ export const events: Event[] = [
       },
     ],
     rules: [
+      "Team Composition: You can register with 1 member but at the time of compitition each team must have 2 members, otherwise you will get rufund",
       "Participation: Individual participation only.",
       "Round Division: Round 1: Guess What? \n Round 2: General Information \n Round 3: Rapid Fire – For Tie-breakers",
       "Quizmaster: The event will be conducted by an expert quizmaster.",
@@ -98,7 +99,7 @@ export const events: Event[] = [
     ],
     teamSize: {
       min: 1,
-      max: 1,
+      max: 2,
     },
   },
   {
