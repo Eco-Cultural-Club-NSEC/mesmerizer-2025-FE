@@ -91,7 +91,7 @@ export const events: Event[] = [
       },
     ],
     rules: [
-      "Participation: Individual participation or team participation. Individual participants must find a teammate on the spot otherwise they won't be able to participate and will be given a refund.",
+      "Participation: Teams of 2 or less are allowed to participate. Single participants will be teamed up, or else refunded",
       "Cross college teams are allowed. On spot registration will also be going on the day of the event.",
       "Qualification round: Prelims consisting of 16 questions will be conducted. A total of 6 team will be selected for the final round. Final round will have standard pounce and bounce rules",
       "The Quiz Master's decision will be final on the day of the event",
