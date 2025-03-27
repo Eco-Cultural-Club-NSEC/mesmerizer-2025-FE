@@ -388,7 +388,7 @@ export const events: Event[] = [
     ],
     teamSize: {
       min: 2,
-      max: 10,
+      max: 6,
     },
   },
 ];
