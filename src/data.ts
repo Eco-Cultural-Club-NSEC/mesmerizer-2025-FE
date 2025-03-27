@@ -387,8 +387,8 @@ export const events: Event[] = [
       "Registration: Late registrations will not be accepted. Ensure timely entry.",
     ],
     teamSize: {
-      min: 2,
-      max: 6,
+      min: 6,
+      max: 10,
     },
   },
 ];
