@@ -7,7 +7,7 @@ export const events: Event[] = [
     date: "05-04-2025",
     time: "first half",
     image:
-      "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742777493/mesmerizer/webp/vdtdinhpja3eidasdmvf.webp",
+      "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149698/mesmerizer/webp/event_thumbnail/hraviuxgtexv4kzualxe.webp",
     location: "New Seminar Hall",
     tagline: "bela bose tumi pacho ki sunte...?",
     code: "ARIA ARENA",
@@ -40,7 +40,7 @@ export const events: Event[] = [
     date: "05-04-2025",
     time: "first half",
     image:
-      "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742777487/mesmerizer/webp/llshxspzpcctvg23kkkn.webp",
+      "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149694/mesmerizer/webp/event_thumbnail/l8v0ekbpvhlxnm9cwhnn.webp",
     location: "Class Room",
     tagline: "ye chand sa raushan chehra...",
     code: "SHADE SHIFTERS",
@@ -75,7 +75,7 @@ export const events: Event[] = [
     date: "05-04-2025",
     time: "first half",
     image:
-      "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742777490/mesmerizer/webp/rl2vfulfkfw4jwpaerfr.webp",
+      "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149696/mesmerizer/webp/event_thumbnail/lpzcny8v3k8lwjqnwyrk.webp",
     location: "Language Lab",
     tagline: "tu mere se zada janti hai kya.!!",
     code: "WIT WIZARDRY",
@@ -108,7 +108,7 @@ export const events: Event[] = [
     date: "05-04-2025",
     time: "second half",
     image:
-      "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742777483/mesmerizer/webp/lo2cpd0n4cwbkykylycr.webp",
+      "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149692/mesmerizer/webp/event_thumbnail/bvslk7qhhv3hzgbplxla.webp",
     location: "Language Lab",
     tagline: "india wants to know...!",
     code: "CLASH OF COMEBACKS",
@@ -148,7 +148,7 @@ export const events: Event[] = [
     date: "05-04-2025",
     time: "second half",
     image:
-      "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742777495/mesmerizer/webp/x1hleoeczcg8phqt3dl4.webp",
+      "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149700/mesmerizer/webp/event_thumbnail/lggwofhrrmskfjhvhcif.webp",
     location: "APC Hall",
     tagline: "kya hai tere dil ke andar?",
     code: "SPOTLIGHT HEIST",
@@ -187,7 +187,7 @@ export const events: Event[] = [
     date: "05-04-2025",
     time: "second half",
     image:
-      "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742777491/mesmerizer/webp/zlluetdaw9tuerig3afl.webp",
+      "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149697/mesmerizer/webp/event_thumbnail/kv3jcxprdyxlyaeoxg4d.webp",
     location: "APC Hall",
     tagline: "jab life ho out of control camera ko karke roll…",
     code: "ABSOLUTE CINEMA",
@@ -223,7 +223,7 @@ export const events: Event[] = [
     date: "06-04-2025",
     time: "first half",
     image:
-      "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742919596/mesmerizer/webp/gugdiu3cmy1mhps5e6rh.webp",
+      "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149693/mesmerizer/webp/event_thumbnail/b5nseicgzrbtafpqhpvj.webp",
     location: "Boys Common Room",
     tagline: "chance pe dance marle...",
     code: "GRACE AND GRIN",
@@ -257,7 +257,7 @@ export const events: Event[] = [
     date: "06-04-2025",
     time: "second half",
     image:
-      "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742777480/mesmerizer/webp/cjzgff1uhxv65yyhh08q.webp",
+      "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149690/mesmerizer/webp/event_thumbnail/vbpsslv9gpb9ou0rk2rn.webp",
     location: "Seminar Hall",
     tagline: "Beat Pe Bawaal, Hasi Bemisaal!...",
     code: "DEXTER",
@@ -291,7 +291,7 @@ export const events: Event[] = [
     date: "06-04-2025",
     time: "second half",
     image:
-      "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742777494/mesmerizer/webp/j6bhxseugmzvkrmaqz5a.webp",
+      "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149699/mesmerizer/webp/event_thumbnail/iqt2co6amfkyunaiddzj.webp",
     location: "Boys Common Room",
     tagline: "Nachte na janle uthon beka...",
     code: "NATYA NINJAS",
@@ -325,7 +325,7 @@ export const events: Event[] = [
     date: "06-04-2025",
     time: "first half",
     image:
-      "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742777482/mesmerizer/webp/t0tfz3di5w2bdugt5ssn.webp",
+      "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149691/mesmerizer/webp/event_thumbnail/sromq6ajzrkoeibvxnkm.webp",
     location: "Boys Common Room",
     tagline: "Dance like nobody’s watchig... but we all know we’re judging.",
     code: "FUN FIASKO",
@@ -361,7 +361,7 @@ export const events: Event[] = [
     date: "06-04-2025",
     time: "second half",
     image:
-      "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742777488/mesmerizer/webp/hdr1qeoxrhq8mormrayd.webp",
+      "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149695/mesmerizer/webp/event_thumbnail/bowjt2cge0thnpm7hkqx.webp",
     location: "Boys Common Room",
     tagline: "kaun hai wo jo mujhe murke nehi dekha!!",
     code: "VOGUE VORTEX",

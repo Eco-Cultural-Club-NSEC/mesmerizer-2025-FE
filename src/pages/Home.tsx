@@ -176,7 +176,7 @@ const Home = () => {
             </div>
             <Card className="hover:shadow-none">
               <img
-                src="https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778595/mesmerizer/webp/um5rkyullhnt4rmyhrsv.webp"
+                src="https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149824/mesmerizer/webp/first_slider/sijtxqhixyfy0zxdifta.webp"
                 alt=""
               />
             </Card>
@@ -240,7 +240,7 @@ const Home = () => {
             </div>
             <Card>
               <img
-                src="https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223578/mesmerizer/webp/ykfj4o2u0v61nnndo50h.webp"
+                src="https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149827/mesmerizer/webp/first_slider/zhyavtcyl4hj3zgkizts.webp"
                 alt=""
               />
             </Card>

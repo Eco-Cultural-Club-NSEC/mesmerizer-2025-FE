@@ -3,23 +3,21 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Card from "./Card";
 
 const images = [
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778595/mesmerizer/webp/um5rkyullhnt4rmyhrsv.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778598/mesmerizer/webp/szjdvqk8tkxvtcia8wkx.webp",
-  // "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778602/mesmerizer/webp/fzrjbz0o6smwutrlryjs.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223453/mesmerizer/webp/s94uldwrsyuo5rwswtrl.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742778606/mesmerizer/webp/htr1x2awnccszezc0s6l.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223596/mesmerizer/webp/g28zc4efs3wpbtd8ttrh.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223447/mesmerizer/webp/zs1kiw5u7jnreereeegb.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223457/mesmerizer/webp/lxquatqshwoensb7a8bu.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223478/mesmerizer/webp/vkowgc8v0urqwdi62fgg.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223578/mesmerizer/webp/ykfj4o2u0v61nnndo50h.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223467/mesmerizer/webp/fjei8pxernmzqxt9v1j0.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223491/mesmerizer/webp/wa4xmqaoz1eqtuwwduzs.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223472/mesmerizer/webp/clevl8ezmz5ukwlijldf.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223462/mesmerizer/webp/r6gxkhwt7vvunq25zp3e.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223560/mesmerizer/webp/gjsejcjfgx8hahdpt7nt.webp",
-  // "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223495/mesmerizer/webp/ots4a8vk4ahqr7fn1sdq.webp",
-  "https://res.cloudinary.com/dzuj9tj3y/image/upload/v1742223488/mesmerizer/webp/s7cm7zggpbzf02nsx72b.webp",
+  "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149808/mesmerizer/webp/first_slider/mje9z1emjq8jdcfxxzpp.webp",
+  "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149809/mesmerizer/webp/first_slider/rylwahxmsyozl8bnakwl.webp",
+  "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149811/mesmerizer/webp/first_slider/q3s5voyqiczgva4vhmrr.webp",
+  "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149814/mesmerizer/webp/first_slider/culrtiyoesvj7q1ktvgd.webp",
+  "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149817/mesmerizer/webp/first_slider/wvmtn4dky1mozzdkrhd0.webp",
+  "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149818/mesmerizer/webp/first_slider/kg5rqtbjdv487b9ffaee.webp",
+  "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149819/mesmerizer/webp/first_slider/do3bnq90bmkshsbjdc46.webp",
+  "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149821/mesmerizer/webp/first_slider/dc4g5tud3ql9brzgswuc.webp",
+  "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149822/mesmerizer/webp/first_slider/gg48phj59nmq3w4vcnsu.webp",
+  "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149824/mesmerizer/webp/first_slider/sijtxqhixyfy0zxdifta.webp",
+  "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149825/mesmerizer/webp/first_slider/vdldptuqjybv22gnaord.webp",
+  "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149826/mesmerizer/webp/first_slider/geksip1d9it6ovdnawuy.webp",
+  "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149827/mesmerizer/webp/first_slider/zhyavtcyl4hj3zgkizts.webp",
+  "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149828/mesmerizer/webp/first_slider/hdrzwawj2o931ipkpciu.webp",
+  "https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149813/mesmerizer/webp/first_slider/vm6zfeczckyq9qux616z.webp",
 ];
 
 const ImageSlideshow = ({ className }: { className?: string }) => {
