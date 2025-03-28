@@ -91,11 +91,10 @@ export const events: Event[] = [
       },
     ],
     rules: [
-      "Team Composition: You can register with 1 member but at the time of compitition each team must have 2 members, otherwise you will get rufund",
-      "Participation: Individual participation only.",
-      "Round Division: Round 1: Guess What? \n Round 2: General Information \n Round 3: Rapid Fire – For Tie-breakers",
-      "Quizmaster: The event will be conducted by an expert quizmaster.",
-      "Rule Changes: Rules are subject to change at the discretion of the Organizing Committee.",
+      "Participation: Teams of 2 or less are allowed to participate. Single participants will be teamed up, or else refunded",
+      "Cross college teams are allowed. On spot registration will also be going on the day of the event.",
+      "Qualification round: Prelims consisting of 16 questions will be conducted. A total of 6 team will be selected for the final round. Final round will have standard pounce and bounce rules",
+      "The Quiz Master's decision will be final on the day of the event",
     ],
     teamSize: {
       min: 1,
@@ -207,7 +206,7 @@ export const events: Event[] = [
       "Cinematography: Both mobile and camera cinematography are allowed. Editing can be done using either a computer or mobile device.",
       "Final Output Resolution: From 1080p upto 2160p HD in 16:9 landscape format.",
       "Output Format: MP4 format.",
-      "Submission Requirements: Teams must submit the final film along with the unedited raw footage used for scrutiny.",
+      "Submission Requirements: Teams must submit the final film along with the unedited raw footage used for scrutiny till 03.04.2025, 11:59 PM.",
       "Prohibited Content: The film should not contain controversial topics, nudity, violence, racism, religious discrimination, or caste discrimination.",
       "Team Size: 2-7 members per team.",
       "Rule Changes: Rules are subject to change at the discretion of the Organizing Committee.",
@@ -388,7 +387,7 @@ export const events: Event[] = [
       "Registration: Late registrations will not be accepted. Ensure timely entry.",
     ],
     teamSize: {
-      min: 2,
+      min: 6,
       max: 10,
     },
   },
