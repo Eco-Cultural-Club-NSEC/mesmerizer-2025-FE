@@ -345,7 +345,6 @@ export const events: Event[] = [
       "Dance Forms: Participants may perform in Classical, Western, folk or any other creative dance form.",
       "Costume, Props & Makeup: Teams are responsible for arranging their own costumes, props, and makeup. Use of hazardous props, such as fire, is strictly prohibited.",
       "Music: Teams must bring their music track on a pendrive and keep a backup on a phone.",
-      "Theme: Fiction Comic",
       "Team Eligibility: Crossover teams are not allowed – all participants must be from the same college.",
       "Registration: Late registrations will not be accepted. Ensure timely submission of entries.",
     ],
