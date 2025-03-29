@@ -202,11 +202,13 @@ export const events: Event[] = [
       },
     ],
     rules: [
+      "Last date of registration for Short Film is 02/04/2025",
       "Duration: The film should be a minimum of 3 minutes and a maximum of 5 minutes, including title and credits.",
       "Cinematography: Both mobile and camera cinematography are allowed. Editing can be done using either a computer or mobile device.",
       "Final Output Resolution: From 1080p upto 2160p HD in 16:9 landscape format.",
       "Output Format: MP4 format.",
       "Submission Requirements: Teams must submit the final film along with the unedited raw footage used for scrutiny till 03.04.2025, 11:59 PM.",
+      "After registration participants will be added in a WhatsApp group where they can share their short films",
       "Prohibited Content: The film should not contain controversial topics, nudity, violence, racism, religious discrimination, or caste discrimination.",
       "Team Size: 2-7 members per team.",
       "Rule Changes: Rules are subject to change at the discretion of the Organizing Committee.",
