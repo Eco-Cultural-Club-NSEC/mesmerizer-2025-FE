@@ -1,177 +1,181 @@
-import { useFieldArray, useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
-import {
-  User,
-  Mail,
-  Phone,
-  Building2,
-  Trophy,
-  BadgeIndianRupee,
-  HandCoins,
-  UserPlus,
-  UserMinus,
-  Loader2,
-  Star,
-} from "lucide-react";
-import { useEffect, useState } from "react";
-import { events } from "../data";
-import { Event } from "../types";
-import FileUploadField from "../components/FileUploadField";
+// import { useFieldArray, useForm } from "react-hook-form";
+// import { useLocation, 
+//   // useNavigate 
+// } from "react-router-dom";
+// import {
+//   User,
+//   Mail,
+//   Phone,
+//   Building2,
+//   Trophy,
+//   BadgeIndianRupee,
+//   HandCoins,
+//   UserPlus,
+//   UserMinus,
+//   Loader2,
+//   Star,
+// } from "lucide-react";
+// import { useEffect, useState } from "react";
+// import { events } from "../data";
+// import { Event } from "../types";
+// import FileUploadField from "../components/FileUploadField";
 import Card from "../components/Card";
-import Button2 from "../components/Button2";
-import { uploadToCloudinary, deleteFromCloudinary } from "../utils/cloudinary";
+// import Button2 from "../components/Button2";
+// import { uploadToCloudinary, deleteFromCloudinary } from "../utils/cloudinary";
 
-interface RegistrationFormInput {
-  name: { name: string }[];
-  email: string;
-  whatsapp_no: string;
-  alt_phone: string;
-  event: string;
-  collage_name: string;
-  amount_paid: number;
-  transaction_id: string;
-  transaction_screenshot: File | null;
-}
+// interface RegistrationFormInput {
+//   name: { name: string }[];
+//   email: string;
+//   whatsapp_no: string;
+//   alt_phone: string;
+//   event: string;
+//   collage_name: string;
+//   amount_paid: number;
+//   transaction_id: string;
+//   transaction_screenshot: File | null;
+// }
 
-interface RegistrationFormSend {
-  name: string[];
-  email: string;
-  whatsapp_no: string;
-  alt_phone: string;
-  event: string;
-  event_date: string;
-  event_location: string;
-  collage_name: string;
-  amount_paid: number;
-  transaction_id: string;
-  transaction_screenshot: string;
-}
+// interface RegistrationFormSend {
+//   name: string[];
+//   email: string;
+//   whatsapp_no: string;
+//   alt_phone: string;
+//   event: string;
+//   event_date: string;
+//   event_location: string;
+//   collage_name: string;
+//   amount_paid: number;
+//   transaction_id: string;
+//   transaction_screenshot: string;
+// }
 
 const Registration = () => {
-  const location = useLocation();
-  const preSelectedEventId = location.state?.eventId;
-  const [event, setEvent] = useState<Event>(
-    events.find((e) => e.id === preSelectedEventId) || events[0]
-  );
+  // const location = useLocation();
+  // const preSelectedEventId = location.state?.eventId;
+  // const [event, setEvent] = useState<Event>(
+  //   events.find((e) => e.id === preSelectedEventId) || events[0]
+  // );
 
-  const {
-    register,
-    control,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<RegistrationFormInput>();
+  // const {
+  //   // register,
+  //   control,
+  //   // handleSubmit,
+  //   // formState: { errors, isSubmitting },
+  // } = useForm<RegistrationFormInput>();
 
-  const { fields, append, remove, replace } = useFieldArray({
-    control,
-    name: "name",
-  });
+  // const { fields, 
+  //   // append, remove, 
+  //   replace } = useFieldArray({
+  //   control,
+  //   name: "name",
+  // });
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    if (event) {
-      const minSize = event.teamSize.min ?? 1;
-      const maxSize = event.teamSize.max ?? 1;
-      const currentSize = fields.length;
+  // useEffect(() => {
+  //   if (event) {
+  //     const minSize = event.teamSize.min ?? 1;
+  //     const maxSize = event.teamSize.max ?? 1;
+  //     const currentSize = fields.length;
 
-      if (currentSize < minSize) {
-        // Add missing fields to match `teamMinSize`
-        replace([
-          ...fields,
-          ...Array.from({ length: minSize - currentSize }, () => ({
-            name: "",
-          })),
-        ]);
-      } else if (currentSize > maxSize) {
-        // Remove extra fields to match `teamMaxSize`
-        replace(fields.slice(0, maxSize));
-      }
-    } else {
-      // If no event is selected, initialize with first event's min team size
-      const firstEvent = events[0];
-      const initialSize = firstEvent?.teamSize.min ?? 1;
-      replace(Array.from({ length: initialSize }, () => ({ name: "" })));
-    }
-  }, [event]);
+  //     if (currentSize < minSize) {
+  //       // Add missing fields to match `teamMinSize`
+  //       replace([
+  //         ...fields,
+  //         ...Array.from({ length: minSize - currentSize }, () => ({
+  //           name: "",
+  //         })),
+  //       ]);
+  //     } else if (currentSize > maxSize) {
+  //       // Remove extra fields to match `teamMaxSize`
+  //       replace(fields.slice(0, maxSize));
+  //     }
+  //   } else {
+  //     // If no event is selected, initialize with first event's min team size
+  //     const firstEvent = events[0];
+  //     const initialSize = firstEvent?.teamSize.min ?? 1;
+  //     replace(Array.from({ length: initialSize }, () => ({ name: "" })));
+  //   }
+  // }, [event]);
 
-  const addParticipant = () => {
-    if (fields.length < (event?.teamSize.max ?? 0)) {
-      append({ name: "" });
-    }
-  };
+  // const addParticipant = () => {
+  //   if (fields.length < (event?.teamSize.max ?? 0)) {
+  //     append({ name: "" });
+  //   }
+  // };
 
-  const removeParticipant = () => {
-    if (fields.length > event.teamSize.min) {
-      remove(fields.length - 1);
-    }
-  };
+  // const removeParticipant = () => {
+  //   if (fields.length > event.teamSize.min) {
+  //     remove(fields.length - 1);
+  //   }
+  // };
 
-  const onSubmit = async (data: RegistrationFormInput) => {
-    let uploadedImageData = null;
-    try {
-      // Upload image to Cloudinary if exists
-      if (data.transaction_screenshot) {
-        uploadedImageData = await uploadToCloudinary(
-          data.transaction_screenshot
-        );
-      }
+  // const onSubmit = async (data: RegistrationFormInput) => {
+  //   let uploadedImageData = null;
+  //   try {
+  //     // Upload image to Cloudinary if exists
+  //     if (data.transaction_screenshot) {
+  //       uploadedImageData = await uploadToCloudinary(
+  //         data.transaction_screenshot
+  //       );
+  //     }
 
-      if (!uploadedImageData) {
-        throw new Error("Transaction screenshot upload failed");
-      }
+  //     if (!uploadedImageData) {
+  //       throw new Error("Transaction screenshot upload failed");
+  //     }
 
-      // Prepare data for backend
-      const submissionData: RegistrationFormSend = {
-        name: data.name.map((n) => n.name),
-        email: data.email,
-        whatsapp_no: data.whatsapp_no,
-        alt_phone: data.alt_phone,
-        event: data.event,
-        event_date: event?.date,
-        event_location: event.location,
-        collage_name: data.collage_name,
-        amount_paid: data.amount_paid,
-        transaction_id: data.transaction_id,
-        transaction_screenshot: uploadedImageData.secure_url,
-      };
+  //     // Prepare data for backend
+  //     const submissionData: RegistrationFormSend = {
+  //       name: data.name.map((n) => n.name),
+  //       email: data.email,
+  //       whatsapp_no: data.whatsapp_no,
+  //       alt_phone: data.alt_phone,
+  //       event: data.event,
+  //       event_date: event?.date,
+  //       event_location: event.location,
+  //       collage_name: data.collage_name,
+  //       amount_paid: data.amount_paid,
+  //       transaction_id: data.transaction_id,
+  //       transaction_screenshot: uploadedImageData.secure_url,
+  //     };
 
-      const response = await fetch(
-        `${
-          import.meta.env.VITE_VERCEL_ENV_BACKEND_URL
-        }/api/v1/participants/register`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(submissionData),
-        }
-      );
+  //     const response = await fetch(
+  //       `${
+  //         import.meta.env.VITE_VERCEL_ENV_BACKEND_URL
+  //       }/api/v1/participants/register`,
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(submissionData),
+  //       }
+  //     );
 
-      if (response.status !== 201) {
-        const errorData = await response.json();
-        throw new Error(errorData.message);
-      }
+  //     if (response.status !== 201) {
+  //       const errorData = await response.json();
+  //       throw new Error(errorData.message);
+  //     }
 
-      // Handle success
-      navigate("/registration-success");
-    } catch (error) {
-      // Delete uploaded image if registration failed
-      if (uploadedImageData?.public_id) {
-        try {
-          await deleteFromCloudinary(uploadedImageData.public_id);
-        } catch (deleteError) {
-          console.error("Error deleting image:", deleteError);
-        }
-      }
-      console.error("Error during registration:", error);
-      navigate("/registration-failed", {
-        state: {
-          errorMessage: error instanceof Error ? error.message : null,
-        },
-      });
-    }
-  };
+  //     // Handle success
+  //     navigate("/registration-success");
+  //   } catch (error) {
+  //     // Delete uploaded image if registration failed
+  //     if (uploadedImageData?.public_id) {
+  //       try {
+  //         await deleteFromCloudinary(uploadedImageData.public_id);
+  //       } catch (deleteError) {
+  //         console.error("Error deleting image:", deleteError);
+  //       }
+  //     }
+  //     console.error("Error during registration:", error);
+  //     navigate("/registration-failed", {
+  //       state: {
+  //         errorMessage: error instanceof Error ? error.message : null,
+  //       },
+  //     });
+  //   }
+  // };
 
   return (
     <section className="pt-24 pb-16 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
@@ -184,11 +188,11 @@ const Registration = () => {
       <div className="text-center mb-12 relative z-10">
         <h1 className="text-5xl font-black mb-4">Register Now</h1>
         <p className="text-xl">
-          Every great achievement begins with showing up&ndash;participation
+          Every great achievement begins with showing up &ndash; participation
           itself is a victory
         </p>
       </div>
-      <div className="relative z-10">
+      {/* <div className="relative z-10">
         <Card className="hover:shadow-none font-sans">
           <div className="flex flex-col sm:flex-row items-center justify-around">
             <div className="flex flex-col items-center justify-center">
@@ -507,7 +511,6 @@ const Registration = () => {
                   type="submit"
                   className="w-full text-center text-xl py-4 relative"
                 >
-                  {/* {isSubmitting ? ( */}
                   <>
                     <Loader2
                       className="animate-spin inline-block mr-2"
@@ -515,16 +518,11 @@ const Registration = () => {
                     />
                     Uploading...
                   </>
-                  {/* ) : (
-                    "Submit Registration"
-                  )} */}
                 </Button2>
-                {/* {isSubmitting && ( */}
                 <p className="text-center text-whiteanimate-pulse">
                   Please do not close or refresh the page while registration is
                   in progress...
                 </p>
-                {/* )} */}
               </div>
             </Card>
           ) : (
@@ -538,6 +536,12 @@ const Registration = () => {
             </div>
           )}
         </form>
+      </div> */}
+
+      <div className="relative z-10">
+        <Card className="hover:shadow-none text-center text-2xl">
+          Registration Closed
+        </Card>
       </div>
     </section>
   );
