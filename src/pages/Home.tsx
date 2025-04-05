@@ -8,7 +8,7 @@ import EventCard from "../components/EventCard";
 import ImageSlideshow2Line from "../components/ImageSlideshow2Line";
 import Button2 from "../components/Button2";
 
-const eventDate = new Date("2025-04-05").getTime();
+const eventDate = new Date("2025-04-04").getTime();
 
 const featuredEvents = events.slice(0, 3);
 
@@ -88,25 +88,25 @@ const Home = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-sm:w-[80vw] mx-auto mb-8 text-white">
             <div className="flex justify-center items-center">
               <div className="glass-box w-24 h-24 flex flex-col justify-center items-center">
-                <span className="text-3xl">{timeLeft.days}</span>
+                <span className="text-3xl">{/* {timeLeft.days} */}0</span>
                 <span className="text-sm">DAYS</span>
               </div>
             </div>
             <div className="flex justify-center items-center">
               <div className="glass-box w-24 h-24 flex flex-col justify-center items-center">
-                <span className="text-3xl">{timeLeft.hours}</span>
+                <span className="text-3xl">{/* {timeLeft.hours} */}0</span>
                 <span className="text-sm">HOURS</span>
               </div>
             </div>
             <div className="flex justify-center items-center">
               <div className="glass-box w-24 h-24 flex flex-col justify-center items-center">
-                <span className="text-3xl">{timeLeft.minutes}</span>
+                <span className="text-3xl">{/* {timeLeft.minutes} */}0</span>
                 <span className="text-sm">MINUTES</span>
               </div>
             </div>
             <div className="flex justify-center items-center">
               <div className="glass-box w-24 h-24 flex flex-col justify-center items-center">
-                <span className="text-3xl">{timeLeft.seconds}</span>
+                <span className="text-3xl">{/* {timeLeft.seconds} */}0</span>
                 <span className="text-sm">SECONDS</span>
               </div>
             </div>
@@ -269,10 +269,16 @@ const Home = () => {
             ))}
           </div>
           <div className="space-x-4 flex text-white justify-around max-sm:flex-col items-center max-sm:pr-4 mt-8">
-            <Link to="https://drive.google.com/uc?export=download&id=11JmHZi8RXzqSfOCJazaLboNKyxdvLKxo" className="max-sm:ml-4 max-sm:w-full">
+            <Link
+              to="https://drive.google.com/uc?export=download&id=11JmHZi8RXzqSfOCJazaLboNKyxdvLKxo"
+              className="max-sm:ml-4 max-sm:w-full"
+            >
               <Button2 className="max-sm:w-full">Download Brochure</Button2>
             </Link>
-            <Link to="/events" className="max-sm:ml-0 max-sm:mt-4 max-sm:w-full">
+            <Link
+              to="/events"
+              className="max-sm:ml-0 max-sm:mt-4 max-sm:w-full"
+            >
               <Button2 className="px-8 max-sm:w-full">All Events</Button2>
             </Link>
           </div>
