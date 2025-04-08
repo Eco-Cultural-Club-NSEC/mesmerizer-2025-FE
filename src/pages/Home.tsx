@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { ArrowRight, Calendar, MapPin, Star, Camera, Drum } from "lucide-react";
+import { ArrowRight, Calendar, MapPin, Star, Camera, Drum, NotebookPen } from "lucide-react";
 import { Link } from "react-router-dom";
 import { events } from "../data";
 import Card from "../components/Card";
@@ -169,6 +169,13 @@ const Home = () => {
                     <div>
                       <h3 className="">Featuring Live Performance By</h3>
                       <p>Cactus & Snigdhajit</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <NotebookPen className="mr-4 text-purple-500" />
+                    <div>
+                      <h3 className="">Get Pass From</h3>
+                      <p>Central Library, NSEC</p>
                     </div>
                   </div>
                 </div>
