@@ -8,7 +8,7 @@ import EventCard from "../components/EventCard";
 import ImageSlideshow2Line from "../components/ImageSlideshow2Line";
 import Button2 from "../components/Button2";
 
-const eventDate = new Date("2025-04-04").getTime();
+const eventDate = new Date("2025-04-11").getTime();
 
 const featuredEvents = events.slice(0, 3);
 
@@ -88,25 +88,25 @@ const Home = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-sm:w-[80vw] mx-auto mb-8 text-white">
             <div className="flex justify-center items-center">
               <div className="glass-box w-24 h-24 flex flex-col justify-center items-center">
-                <span className="text-3xl">{/* {timeLeft.days} */}0</span>
+                <span className="text-3xl"> {timeLeft.days} </span>
                 <span className="text-sm">DAYS</span>
               </div>
             </div>
             <div className="flex justify-center items-center">
               <div className="glass-box w-24 h-24 flex flex-col justify-center items-center">
-                <span className="text-3xl">{/* {timeLeft.hours} */}0</span>
+                <span className="text-3xl"> {timeLeft.hours} </span>
                 <span className="text-sm">HOURS</span>
               </div>
             </div>
             <div className="flex justify-center items-center">
               <div className="glass-box w-24 h-24 flex flex-col justify-center items-center">
-                <span className="text-3xl">{/* {timeLeft.minutes} */}0</span>
+                <span className="text-3xl"> {timeLeft.minutes} </span>
                 <span className="text-sm">MINUTES</span>
               </div>
             </div>
             <div className="flex justify-center items-center">
               <div className="glass-box w-24 h-24 flex flex-col justify-center items-center">
-                <span className="text-3xl">{/* {timeLeft.seconds} */}0</span>
+                <span className="text-3xl"> {timeLeft.seconds} </span>
                 <span className="text-sm">SECONDS</span>
               </div>
             </div>
@@ -154,21 +154,21 @@ const Home = () => {
                     <Calendar className="mr-4 text-[rgb(var(--color-accent))]" />
                     <div>
                       <h3 className="">Date</h3>
-                      <p>6th April, Afternoon</p>
+                      <p>11 th April, 3 am</p>
                     </div>
                   </div>
                   <div className="flex items-center">
                     <MapPin className="mr-4 text-[rgb(var(--color-secondary))]" />
                     <div>
                       <h3 className="">Location</h3>
-                      <p>Boys Common Room</p>
+                      <p>Gitanjali Stadium</p>
                     </div>
                   </div>
                   <div className="flex items-center">
                     <Drum className="mr-4 text-[rgb(var(--color-primary))]" />
                     <div>
-                      <h3 className="">Band</h3>
-                      <p>Reveal Soon</p>
+                      <h3 className="">Featuring Live Performance By</h3>
+                      <p>Cactus & Snigdhajit</p>
                     </div>
                   </div>
                 </div>
