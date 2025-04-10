@@ -1,5 +1,13 @@
 import { useState, useEffect, useMemo } from "react";
-import { ArrowRight, Calendar, MapPin, Star, Camera, Drum, NotebookPen } from "lucide-react";
+import {
+  ArrowRight,
+  Calendar,
+  MapPin,
+  Star,
+  Camera,
+  Drum,
+  NotebookPen,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { events } from "../data";
 import Card from "../components/Card";
@@ -8,7 +16,7 @@ import EventCard from "../components/EventCard";
 import ImageSlideshow2Line from "../components/ImageSlideshow2Line";
 import Button2 from "../components/Button2";
 
-const eventDate = new Date("2025-04-11").getTime();
+const eventDate = new Date(2025, 3, 11, 14).getTime();
 
 const featuredEvents = events.slice(0, 3);
 
@@ -154,7 +162,8 @@ const Home = () => {
                     <Calendar className="mr-4 text-[rgb(var(--color-accent))]" />
                     <div>
                       <h3 className="">Date</h3>
-                      <p>11 th April, 3 am</p>
+                      <p>11 th April, 2 pm</p>
+                      <p>Gate opens at 1 pm & closes at 3 pm</p>
                     </div>
                   </div>
                   <div className="flex items-center">
@@ -181,12 +190,11 @@ const Home = () => {
                 </div>
               </Card>
             </div>
-            <Card className="hover:shadow-none">
-              <img
-                src="https://res.cloudinary.com/dnttjhsvd/image/upload/v1743149824/mesmerizer/webp/first_slider/sijtxqhixyfy0zxdifta.webp"
-                alt=""
-              />
-            </Card>
+            <div className="flex justify-center items-center">
+              <Card className="hover:shadow-none w-[450px]">
+                <img src="/pics/mesmerizer_event_details.jpg" alt="" />
+              </Card>
+            </div>
           </div>
         </div>
       </section>
