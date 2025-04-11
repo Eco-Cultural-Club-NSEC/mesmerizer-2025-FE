@@ -191,7 +191,7 @@ const Home = () => {
               </Card>
             </div>
             <div className="flex justify-center items-center">
-              <Card className="hover:shadow-none w-[450px]">
+              <Card className="hover:shadow-none w-auto min-[500px]:w-[450px]">
                 <img src="/pics/mesmerizer_event_details.jpg" alt="" />
               </Card>
             </div>
